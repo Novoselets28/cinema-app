@@ -4,10 +4,12 @@ import SessionList from './SessionList';
 
 const MovieSessions = () => {
   const [selectedDate, setSelectedDate] = useState(null);
+  
+
+
 
   const [availableDates, setAvailableDates] = useState([]);
   useEffect(() => {
-    // Fetch available dates from the provided URL
     fetch('https://demo7324815.mockable.io/api/sessions')
       .then((response) => {
         if (!response.ok) {
@@ -25,17 +27,10 @@ const MovieSessions = () => {
       });
   }, []); 
 
-  // const availableDates = [
-  //   '2023-09-06',
-  //   '2023-09-07',
-  //   '2023-09-08',
-  //   '2023-09-09',
-  //   '2023-09-10',
-  //   '2023-09-11',
-  // ];
 
   const handleDateSelect = (date) => {
     setSelectedDate(date);
+
   };
 
   return (

@@ -6,12 +6,12 @@ import '../index.css'
 const Cinema = () => {
   const { date } = useParams();
   const [selectedSeats, setSelectedSeats] = useState([]);
-    const [availableSeats, setAvailableSeats] = useState([]);
+  const [availableSeats, setAvailableSeats] = useState([]);
+    
 
 
 
   useEffect(() => {
-    // Fetch available seats from the provided URL
     fetch('https://demo7324815.mockable.io/seats')
       .then((response) => {
         if (!response.ok) {
