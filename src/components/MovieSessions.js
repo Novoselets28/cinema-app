@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Typography, List, ListItem, ListItemText } from '@mui/material';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
+import '../styled/MovieSessions.jsx'
+import { StyledButton, StyledContainer } from '../styled/MovieSessions.jsx';
 
 const MovieSessions = () => {
   const [selectedDate, setSelectedDate] = useState(null);
-  const navigate = useNavigate()
-
-
+  const navigate = useNavigate();
 
   const [availableDates, setAvailableDates] = useState([]);
   useEffect(() => {
@@ -25,29 +24,43 @@ const MovieSessions = () => {
       .catch((error) => {
         console.error('Error fetching available dates:', error);
       });
-  }, []); 
+  }, []);
 
+  const formatDateToDayOfWeek = (dateString) => {
+    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const date = new Date(dateString);
+    const dayOfWeek = daysOfWeek[date.getUTCDay()];
+    const dayOfMonth = date.getDate();
+
+    return `${dayOfWeek}, ${dayOfMonth}`;
+  };
 
   const handleDateSelect = (date) => {
     setSelectedDate(date);
-    navigate('/sessionlist')
+    navigate('/sessionlist');
   };
 
   return (
-    <Container>
-      <Typography variant="h4" gutterBottom>
-        Available dates for booking tickets
-      </Typography>
-      <List>
+    <StyledContainer className="movie-sessions-page">
+      <h4>Available dates for booking tickets</h4>
+      <>
         {availableDates.map((date, index) => (
-          <ListItem key={index} button onClick={() => handleDateSelect(date)}>
-              <ListItemText primary={date} />
-          </ListItem>
+          <StyledButton
+            variant="dark"
+            key={index}
+            className="transparent-button"
+            onClick={() => handleDateSelect(date)}
+          >
+            {formatDateToDayOfWeek(date)}
+          </StyledButton>
         ))}
-      </List>
+      </>
       {selectedDate}
-    </Container>
+    </StyledContainer>
   );
 };
 
 export default MovieSessions;
+
+
+
