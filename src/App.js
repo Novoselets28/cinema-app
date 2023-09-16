@@ -12,8 +12,8 @@ function App() {
         <h1>Movie Ticket Booking</h1>
         <Routes>
             <Route exact path="/" element={<MovieSessions/>} />
-            <Route path='/sessionlist' element={<SessionList/>} />
-            <Route path="/cinema" element={<Cinema/>} />
+            <Route path="/session-list/:date" element={<SessionList />} />
+            <Route path="/cinema/:date/:selectedSession" element={<Cinema />} />
         </Routes>
       </div>
     

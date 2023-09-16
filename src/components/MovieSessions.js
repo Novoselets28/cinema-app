@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styled/MovieSessions.jsx'
 import { StyledButton, StyledContainer } from '../styled/MovieSessions.jsx';
+import { Card } from 'react-bootstrap';
 
 const MovieSessions = () => {
-  const [selectedDate, setSelectedDate] = useState(null);
   const navigate = useNavigate();
 
   const [availableDates, setAvailableDates] = useState([]);
@@ -27,22 +27,21 @@ const MovieSessions = () => {
   }, []);
 
   const formatDateToDayOfWeek = (dateString) => {
-    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const date = new Date(dateString);
     const dayOfWeek = daysOfWeek[date.getUTCDay()];
     const dayOfMonth = date.getDate();
 
-    return `${dayOfWeek}, ${dayOfMonth}`;
+    return `${dayOfWeek} ${dayOfMonth}`;
   };
 
   const handleDateSelect = (date) => {
-    setSelectedDate(date);
-    navigate('/sessionlist');
+    navigate(`/session-list/${date}`);
   };
 
   return (
     <StyledContainer className="movie-sessions-page">
-      <h4>Available dates for booking tickets</h4>
+      <Card.Header>Available dates for booking tickets</Card.Header>
       <>
         {availableDates.map((date, index) => (
           <StyledButton
@@ -55,12 +54,8 @@ const MovieSessions = () => {
           </StyledButton>
         ))}
       </>
-      {selectedDate}
     </StyledContainer>
   );
 };
 
 export default MovieSessions;
-
-
-

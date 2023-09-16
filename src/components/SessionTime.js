@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Container } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styled/SessionList.jsx'; // Import your custom CSS if needed
-import { useNavigate } from 'react-router';
-import { StyledButton } from '../styled/SessionTime';
+import { useNavigate, useParams } from 'react-router';
+import { StyledButton, StyledContainer } from '../styled/SessionTime';
 
 
 const SessionTime = () => {
+  const {date} = useParams()
   const [sessions, setSessions] = useState([]);
   const [selectedSession, setSelectedSession] = useState(null);
   const navigate = useNavigate(); // Initialize history from React Router
@@ -27,13 +28,12 @@ const SessionTime = () => {
     // Check if a session is selected
     if (selectedSession) {
       // Navigate to the "Cinema" component with the selected date and session time
-      navigate(`/cinema?date=selectedDate&time=${selectedSession}`);
+      navigate(`/cinema/${date}/${selectedSession}`);
     }
   };
 
   return (
-    <Container className="movie-sessions-page">
-      <>
+    <StyledContainer>
         {sessions.map((session, index) => (
           <StyledButton
             key={index}
@@ -43,13 +43,12 @@ const SessionTime = () => {
             {session}
           </StyledButton>
         ))}
-      </>
       {selectedSession && (
         <Button variant="success" onClick={handleBookClick}>
             Book
         </Button>
       )}
-    </Container>
+    </StyledContainer>
   );
 };
 

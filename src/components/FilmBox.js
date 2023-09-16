@@ -1,25 +1,33 @@
-import React, { useState } from 'react'
-import { Button, Card, Col, Modal, Row } from 'react-bootstrap'
+import React, { useEffect, useState } from 'react'
+import { Button, Card, Col, Modal } from 'react-bootstrap'
 import SessionTime from './SessionTime';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
+// import { useNavigate } from 'react-router';
 
 const FilmBox = ({Title, Poster}) => {
 
     const [showPopup, setShowPopup] = useState(false);
+    const location = useLocation();
+  const navigate = useNavigate();
 
-    const navigate = useNavigate(); // Initialize history from React Router
-
-
-    const handleShowPopup = () => {
-        setShowPopup(true);
-        navigate('/popup')
+  useEffect(() => {
+    if (location.hash === `#${Title}`) {
+      setShowPopup(true);
     }
-    const handleClosePopup = () => setShowPopup(false)
+  }, [location, Title]);
 
+  const handleShowPopup = () => {
+    setShowPopup(true);
+    navigate(`#${Title}`);
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+    navigate('');
+  };
 
 
   return (
-        <Row >
           <Col key={Title} xs={12} md={6} lg={4} xxl={3}>
             <Card className="mb-3">
               <Card.Img
@@ -28,7 +36,7 @@ const FilmBox = ({Title, Poster}) => {
                 src={Poster}
                 alt={Title}
               />
-              <Card.Body>
+              <Card.Body >
                 <Card.Title>{Title}</Card.Title>
                 <Button variant="primary" onClick={handleShowPopup}>
                   View More
@@ -38,7 +46,7 @@ const FilmBox = ({Title, Poster}) => {
                 <Modal.Header closeButton>
                     <Modal.Title></Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body className='mx-auto'>
                     <img className='card-img-top' src={Poster} alt={Title}></img>
                     <h3>{Title}</h3>
                     <SessionTime/>
@@ -46,7 +54,6 @@ const FilmBox = ({Title, Poster}) => {
               </Modal>
             </Card>
           </Col>
-        </Row>
   )
 }
 

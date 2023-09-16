@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container, Typography, Button } from '@mui/material';
-import '../index.css'
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import '../index.css';
 
 const Cinema = () => {
-  const { date } = useParams();
+  const { date, selectedSession } = useParams();
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [availableSeats, setAvailableSeats] = useState([]);
-    
-
-
 
   useEffect(() => {
     fetch('https://demo7324815.mockable.io/seats')
@@ -28,6 +25,7 @@ const Cinema = () => {
         console.error('Error fetching available seats:', error);
       });
   }, []);
+  
 
   const handleSeatSelect = (seat) => {
     if (selectedSeats.includes(seat)) {
@@ -38,31 +36,28 @@ const Cinema = () => {
   };
 
   const handleBookSeats = () => {
-    alert(`Booked seats: ${selectedSeats.join(', ')} for ${date}`);
+    alert(`Booked seats: ${selectedSeats.join(', ')} for ${selectedSession}`);
   };
-  
 
   return (
     <Container>
-      <Typography variant="h4" gutterBottom>
-        {date}
-      </Typography>
-      <div>
-        <h2>Select Seats</h2>
-        <div className="seat-container">
-          {availableSeats.map((seat) => (
+      <h4>{date}</h4>
+      <h2>Select Seats</h2>
+      <Row className="seat-container">
+        {availableSeats.map((seat) => (
+          <Col key={seat} xs={2}>
             <Button
-              key={seat}
-              variant={selectedSeats.includes(seat) ? 'contained' : 'outlined'}
+              variant={selectedSeats.includes(seat) ? 'success' : 'outline-secondary'}
               onClick={() => handleSeatSelect(seat)}
+              className="mb-2"
             >
               {seat}
             </Button>
-          ))}
-        </div>
-      </div>
-      <div className='confirm-btn'>
-        <Button variant="contained" color="primary" onClick={handleBookSeats}>
+          </Col>
+        ))}
+      </Row>
+      <div className="confirm-btn">
+        <Button variant="primary" onClick={handleBookSeats}>
           Book Selected Seats
         </Button>
       </div>
@@ -71,6 +66,3 @@ const Cinema = () => {
 };
 
 export default Cinema;
-
-
-

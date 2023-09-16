@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import FilmBox from './FilmBox'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { StyledContainer } from '../styled/SessionList';
+import { StyledContainer, StyledRow } from '../styled/SessionList';
 
 
 function SessionList() {
+
 
   const [films, setFilms] = useState([])
 
@@ -18,8 +19,11 @@ function SessionList() {
 
   return (
     <StyledContainer className="center-grid">
-      {films.map((filmReq)=>
-      <FilmBox key={filmReq.id} {...filmReq} />)}
+      <StyledRow>
+        {films.map((filmReq)=>
+          <FilmBox key={filmReq.id} {...filmReq} />)}
+      </StyledRow>
+      
     </StyledContainer>
   )
 }
