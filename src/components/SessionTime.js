@@ -4,17 +4,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styled/SessionList.jsx'; // Import your custom CSS if needed
 import { useNavigate, useParams } from 'react-router';
 import { StyledButton, StyledContainer } from '../styled/SessionTime';
+import { API_URL_AVAILABLE_SESSION } from "../api";
 
 
 const SessionTime = () => {
   const {date} = useParams()
   const [sessions, setSessions] = useState([]);
   const [selectedSession, setSelectedSession] = useState(null);
-  const navigate = useNavigate(); // Initialize history from React Router
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch data from the API
-    fetch('https://demo7324815.mockable.io/available/sessions')
+    fetch(API_URL_AVAILABLE_SESSION)
       .then((response) => response.json())
       .then((data) => setSessions(data.sessions))
       .catch((error) => console.error('Error fetching data:', error));
@@ -25,9 +25,7 @@ const SessionTime = () => {
   };
 
   const handleBookClick = () => {
-    // Check if a session is selected
     if (selectedSession) {
-      // Navigate to the "Cinema" component with the selected date and session time
       navigate(`/cinema/${date}/${selectedSession}`);
     }
   };

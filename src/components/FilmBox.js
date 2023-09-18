@@ -2,29 +2,33 @@ import React, { useEffect, useState } from 'react'
 import { Button, Card, Col, Modal } from 'react-bootstrap'
 import SessionTime from './SessionTime';
 import { useLocation, useNavigate } from 'react-router';
-// import { useNavigate } from 'react-router';
 
 const FilmBox = ({Title, Poster}) => {
 
     const [showPopup, setShowPopup] = useState(false);
     const location = useLocation();
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  useEffect(() => {
-    if (location.hash === `#${Title}`) {
-      setShowPopup(true);
-    }
-  }, [location, Title]);
-
-  const handleShowPopup = () => {
-    setShowPopup(true);
-    navigate(`#${Title}`);
-  };
-
-  const handleClosePopup = () => {
-    setShowPopup(false);
-    navigate('');
-  };
+    useEffect(() => {
+        const storedPopupState = localStorage.getItem(`popupState-${Title}`);
+        if (storedPopupState === 'open') {
+          setShowPopup(true);
+        } else if (location.hash === `#${Title}`) {
+          setShowPopup(true);
+        }
+      }, [location, Title]);
+    
+      const handleShowPopup = () => {
+        setShowPopup(true);
+        localStorage.setItem(`popupState-${Title}`, 'open');
+        navigate(`#${Title}`);
+      };
+    
+      const handleClosePopup = () => {
+        setShowPopup(false);
+        localStorage.removeItem(`popupState-${Title}`);
+        navigate('');
+      };
 
 
   return (

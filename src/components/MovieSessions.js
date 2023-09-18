@@ -3,13 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import '../styled/MovieSessions.jsx'
 import { StyledButton, StyledContainer } from '../styled/MovieSessions.jsx';
 import { Card } from 'react-bootstrap';
+import { API_URL_SESSIONS } from "../api";
 
 const MovieSessions = () => {
   const navigate = useNavigate();
 
   const [availableDates, setAvailableDates] = useState([]);
   useEffect(() => {
-    fetch('https://demo7324815.mockable.io/api/sessions')
+    fetch(API_URL_SESSIONS)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');

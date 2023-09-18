@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import '../index.css';
+import {CinemaScreen} from '../styled/Cinema';
+import {API_URL_SEATS} from '../api';
 
 const Cinema = () => {
   const { date, selectedSession } = useParams();
@@ -9,7 +11,7 @@ const Cinema = () => {
   const [availableSeats, setAvailableSeats] = useState([]);
 
   useEffect(() => {
-    fetch('https://demo7324815.mockable.io/seats')
+    fetch(API_URL_SEATS)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -44,6 +46,7 @@ const Cinema = () => {
       <h4>{date}</h4>
       <h2>Select Seats</h2>
       <Row className="seat-container">
+      <CinemaScreen className="cinema-screen">Cinema Screen</CinemaScreen>
         {availableSeats.map((seat) => (
           <Col key={seat} xs={2}>
             <Button
@@ -66,3 +69,4 @@ const Cinema = () => {
 };
 
 export default Cinema;
+
