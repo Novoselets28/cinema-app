@@ -1,9 +1,11 @@
 import React from 'react';
-import './App.css';
 import { Route, Routes } from "react-router-dom";
+
 import Cinema from './components/Cinema';
 import SessionList from './components/SessionList';
 import MainPage from './components/MainPage';
+
+import './App.css';
 
 function App() {
   return (

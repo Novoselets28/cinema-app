@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { Button, Card, Col, Modal } from 'react-bootstrap'
-import SessionTime from './SessionTime';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
+
+import SessionTime from './SessionTime';
+
+import { Button, Card, Col, Modal } from 'react-bootstrap'
 
 const FilmBox = ({Title, Poster}) => {
 

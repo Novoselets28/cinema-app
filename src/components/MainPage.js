@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Carousel, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { StyledContainer, StyledRow } from '../styled/MainPage';
+
 import MovieSessions from './MovieSessions';
+
+import { Carousel, Col } from 'react-bootstrap';
+import { StyledContainer, StyledRow } from '../styled/MainPage';
 import {API_URL_LIST_OF_FILM} from '../api';
 
 const MainPage = () => {

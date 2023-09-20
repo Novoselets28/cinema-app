@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styled/SessionList.jsx'; // Import your custom CSS if needed
 import { useNavigate, useParams } from 'react-router';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { Button } from 'react-bootstrap';
 import { StyledButton, StyledContainer } from '../styled/SessionTime';
 import { API_URL_AVAILABLE_SESSION } from "../api";
+import '../styled/SessionList.jsx';
+
 
 
 const SessionTime = () => {
