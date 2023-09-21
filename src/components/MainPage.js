@@ -1,24 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-import MovieSessions from './MovieSessions';
-
+import React, { useEffect } from 'react';
 import { Carousel, Col } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { StyledContainer, StyledRow } from '../styled/MainPage';
-import {API_URL_LIST_OF_FILM} from '../api';
+import MovieSessions from './MovieSessions';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPosters } from '../redux/actions/actionsMainPage';
 
 const MainPage = () => {
-  const [posters, setPosters] = useState([]);
+  const posters = useSelector((state) => state.mainPage.posters);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch(API_URL_LIST_OF_FILM)
-      .then((response) => response.json())
-      .then((data) => {
-        const postersArray = data.list.map((film) => film.Poster);
-        setPosters(postersArray);
-      })
-      .catch((error) => console.error('Error fetching posters:', error));
-  }, []);
+    dispatch(fetchPosters()); 
+  }, [dispatch]);
 
   return (
     <StyledContainer fluid>

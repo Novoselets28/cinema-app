@@ -7,9 +7,9 @@ import { Button, Card, Col, Modal } from 'react-bootstrap'
 
 const FilmBox = ({Title, Poster}) => {
 
-    const [showPopup, setShowPopup] = useState(false);
-    const location = useLocation();
-    const navigate = useNavigate();
+  const [showPopup, setShowPopup] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
     useEffect(() => {
         const storedPopupState = localStorage.getItem(`popupState-${Title}`);
@@ -32,6 +32,11 @@ const FilmBox = ({Title, Poster}) => {
         navigate('');
       };
 
+      const handlePosterClick = () => {
+        navigate(`/${Title}`);
+      };
+
+
 
   return (
           <Col key={Title} xs={12} md={6} lg={4} xxl={3}>
@@ -41,6 +46,7 @@ const FilmBox = ({Title, Poster}) => {
                 variant="top"
                 src={Poster}
                 alt={Title}
+                onClick={handlePosterClick}
               />
               <Card.Body >
                 <Card.Title>{Title}</Card.Title>
