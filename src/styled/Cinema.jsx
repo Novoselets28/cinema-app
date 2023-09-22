@@ -12,6 +12,9 @@ export const CinemaScreen = styled.div`
 `;
 
 export const StyledButton = styled(Button)`
-  background-color: green;
   color: white;
+`;
+
+export const HomeButton = styled(Button)`
+  margin: 5px;
 `;

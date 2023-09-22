@@ -1,5 +1,3 @@
-// filmDescriptionReducer.js
-
 import { SET_FILM_DATA } from "../actions/actionsFilmDescription";
 
 const initialState = {

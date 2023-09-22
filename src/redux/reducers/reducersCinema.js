@@ -1,4 +1,3 @@
-// cinemaReducer.js
 import { SET_AVAILABLE_SEATS, TOGGLE_SELECTED_SEAT } from '../actions/actionsCinema';
 
 const initialState = {

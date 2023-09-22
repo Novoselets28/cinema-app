@@ -6,46 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { StyledButton, StyledContainer } from '../styled/SessionTime';
 import { setSelectedSession } from '../redux/actions/actionsSessionTime';
 
-// const SessionTime = () => {
-//   const { date } = useParams();
-//   const sessions = useSelector((state) => state.sessions);
-//   const selectedSession = useSelector((state) => state.selectedSession);
-//   const dispatch = useDispatch();
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     dispatch({ type: 'FETCH_SESSIONS' });
-//   }, [dispatch]);
-
-//   const handleTimeSelect = (session) => {
-//     dispatch(setSelectedSession(session));
-//   };
-
-//   const handleBookClick = () => {
-//     if (selectedSession) {
-//       navigate(`/cinema/${date}/${selectedSession}`);
-//     }
-//   };
-
-//   return (
-//     <StyledContainer>
-//       {sessions.map((session, index) => (
-//         <StyledButton
-//           key={index}
-//           className="transparent-button"
-//           onClick={() => handleTimeSelect(session)}
-//         >
-//           {session}
-//         </StyledButton>
-//       ))}
-//       {selectedSession && (
-//         <Button variant="success" onClick={handleBookClick}>
-//           Book
-//         </Button>
-//       )}
-//     </StyledContainer>
-//   );
-// };
 
 const SessionTime = () => {
   const { date } = useParams();

@@ -1,4 +1,3 @@
-// filmDescriptionSaga.js
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { API_URL_SESSION_DETAILS } from '../../api';
 import { FETCH_FILM_DATA, setFilmData } from '../actions/actionsFilmDescription';

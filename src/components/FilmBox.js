@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from 'react-router';
 import SessionTime from './SessionTime';
 
 import { Button, Card, Col, Modal } from 'react-bootstrap'
+import { StyledCard } from '../styled/FilmBox';
 
 const FilmBox = ({Title, Poster}) => {
 
@@ -40,7 +41,7 @@ const FilmBox = ({Title, Poster}) => {
 
   return (
           <Col key={Title} xs={12} md={6} lg={4} xxl={3}>
-            <Card className="mb-3">
+            <StyledCard>
               <Card.Img
                 className="poster"
                 variant="top"
@@ -64,7 +65,7 @@ const FilmBox = ({Title, Poster}) => {
                     <SessionTime/>
                 </Modal.Body>
               </Modal>
-            </Card>
+            </StyledCard>
           </Col>
   )
 }

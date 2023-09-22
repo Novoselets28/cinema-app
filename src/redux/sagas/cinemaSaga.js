@@ -1,4 +1,3 @@
-// cinemaSaga.js
 import { put, call, takeEvery } from 'redux-saga/effects';
 import { setAvailableSeats } from '../actions/actionsCinema';
 import { API_URL_SEATS } from '../../api';
