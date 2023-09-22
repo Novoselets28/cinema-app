@@ -1,32 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button, Row, Col } from 'react-bootstrap';
-import { API_URL_SESSION_DETAILS } from '../api';
 import { StyledContainer } from '../styled/FilmDescription';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchFilmData } from '../redux/actions/actionsFilmDescription';
 
 const FilmDescription = () => {
-  const { filmTitle } = useParams();
-
-  const [video, setVideo] = useState('');
-  const [description, setDescription] = useState('');
-
-  useEffect(() => {
-    fetch(API_URL_SESSION_DETAILS)
-      .then((response) => response.json())
-      .then((data) => {
-        const matchingFilm = data.films.find((film) => film.title === filmTitle);
-
-        if (matchingFilm) {
-          setVideo(matchingFilm.video);
-          setDescription(matchingFilm.descr);
-        } else {
-          console.error('Film not found:', filmTitle);
-        }
-      })
-      .catch((error) => {
-        console.error('Error fetching film data:', error);
-      });
-  }, [filmTitle]);
+    const { filmTitle } = useParams();
+    const dispatch = useDispatch();
+    const { video, description } = useSelector((state) => state.filmDescription);
+  
+    useEffect(() => {
+      dispatch(fetchFilmData(filmTitle));
+    }, [dispatch, filmTitle]);
 
   const navigate = useNavigate()
   const goBack = () => navigate(-1);

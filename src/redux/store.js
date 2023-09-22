@@ -62,6 +62,10 @@ import movieSessionsReducer from './reducers/reducersMovieSessions';
 import movieSessionsSaga from './sagas/sagasMovieSessions';
 import mainPageReducer from './reducers/reducersMainPage';
 import mainPageSaga from './sagas/sagasMainPage';
+import filmDescriptionReducer from './reducers/filmDescriptionReducer';
+import filmDescriptionSaga from './sagas/filmDescriptionSaga';
+import cinemaReducer from './reducers/reducersCinema';
+import cinemaSaga from './sagas/cinemaSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -70,6 +74,9 @@ const rootReducer = combineReducers({
   sessionTime: sessionTimeReducer,
   sessionList: sessionListReducer,
   movieSessions: movieSessionsReducer,
+  filmDescription: filmDescriptionReducer,
+  cinema: cinemaReducer,
+
 });
 
 const store = createStore(
@@ -81,4 +88,7 @@ sagaMiddleware.run(mainPageSaga);
 sagaMiddleware.run(sessionTimeSaga);
 sagaMiddleware.run(sessionListSaga);
 sagaMiddleware.run(movieSessionsSaga);
+sagaMiddleware.run(filmDescriptionSaga);
+sagaMiddleware.run(cinemaSaga);
+
 export default store;

@@ -1,41 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import '../index.css';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import {CinemaScreen, StyledButton} from '../styled/Cinema';
-import {API_URL_SEATS} from '../api';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Cinema = () => {
   const { date, selectedSession } = useParams();
-  const [selectedSeats, setSelectedSeats] = useState([]);
-  const [availableSeats, setAvailableSeats] = useState([]);
+  const dispatch = useDispatch();
+  const availableSeats = useSelector((state) => state.cinema.availableSeats);
+  const selectedSeats = useSelector((state) => state.cinema.selectedSeats);
 
   useEffect(() => {
-    fetch(API_URL_SEATS)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        if (data && data.seats) {
-          setAvailableSeats(data.seats);
-        }
-      })
-      .catch((error) => {
-        console.error('Error fetching available seats:', error);
-      });
-  }, []);
-  
+    // Dispatch an action to fetch available seats.
+    dispatch({ type: 'FETCH_AVAILABLE_SEATS' });
+  }, [dispatch]);
 
   const handleSeatSelect = (seat) => {
-    if (selectedSeats.includes(seat)) {
-      setSelectedSeats(selectedSeats.filter((selectedSeat) => selectedSeat !== seat));
-    } else {
-      setSelectedSeats([...selectedSeats, seat]);
-    }
+    // Dispatch an action to toggle selected seat.
+    dispatch({ type: 'TOGGLE_SELECTED_SEAT', payload: seat });
   };
 
   const handleBookSeats = () => {
