@@ -6,6 +6,9 @@ export const StyledContainer = styled(Container)`
     max-width: 100%;
     text-align: center;
     height: 500px;
+    color: white;
+    font-size: 34px;
+    line-height: 18px
 `;
 
 export const StyledRow = styled(Row)`

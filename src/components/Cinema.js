@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import '../index.css';
-import { Container, Row, Col, Button } from 'react-bootstrap';
-import {CinemaScreen, HomeButton, StyledButton} from '../styled/Cinema';
+import { Row, Col, Button } from 'react-bootstrap';
+import {CinemaScreen, HomeButton, StyledButton, StyledContainer} from '../styled/Cinema';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Cinema = () => {
@@ -45,9 +45,9 @@ const Cinema = () => {
 
 
   return (
-    <Container>
-      <h4>{date}</h4>
-      <h2>Select Seats</h2>
+    <StyledContainer>
+      <h4>You selected film for {date}</h4>
+      <h2>Just choose a seat</h2>
       <Row className="seat-container">
       <CinemaScreen className="cinema-screen">Cinema Screen</CinemaScreen>
         {availableSeats.map((seat) => (
@@ -76,7 +76,7 @@ const Cinema = () => {
           </HomeButton>
                   )}
       </div>
-    </Container>
+    </StyledContainer>
   );
 };
 

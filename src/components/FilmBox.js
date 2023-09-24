@@ -57,7 +57,6 @@ const FilmBox = ({Title, Poster}) => {
               </Card.Body>
               <Modal show={showPopup} onHide={handleClosePopup}>
                 <Modal.Header closeButton>
-                    <Modal.Title></Modal.Title>
                 </Modal.Header>
                 <Modal.Body className='mx-auto'>
                     <img className='card-img-top' src={Poster} alt={Title}></img>

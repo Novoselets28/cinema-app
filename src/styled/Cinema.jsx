@@ -1,4 +1,4 @@
-import { Button } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import styled from "styled-components";
 
 export const CinemaScreen = styled.div`
@@ -7,8 +7,11 @@ export const CinemaScreen = styled.div`
   text-align: center;
   font-size: 24px;
   padding: 10px;
-  margin-bottom: 20px; /* Adjust margin as needed */
-  /* You can also add additional styles to customize the appearance of the screen */
+  margin-bottom: 20px;
+`;
+
+export const StyledContainer = styled(Container)`
+  color: white;
 `;
 
 export const StyledButton = styled(Button)`
