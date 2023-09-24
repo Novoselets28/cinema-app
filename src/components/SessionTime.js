@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { StyledButton, StyledContainer } from '../styled/SessionTime';
-import { setSelectedSession } from '../redux/actions/actionsSessionTime';
+import { fetchSessions, setSelectedSession } from '../redux/ducks/sessionTime';
 
 
 const SessionTime = () => {
@@ -15,7 +15,7 @@ const SessionTime = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_SESSIONS' });
+    dispatch(fetchSessions());
   }, [dispatch]);
 
   if (sessions.length === 0) {

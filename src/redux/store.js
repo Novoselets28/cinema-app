@@ -1,18 +1,11 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import sessionTimeReducer from './reducers/reducersSessionTime';
-import sessionListReducer from './reducers/reducersSessionList';
-import sessionTimeSaga from './sagas/sagasSessionTime';
-import sessionListSaga from './sagas/sagasSessionList';
-import movieSessionsReducer from './reducers/reducersMovieSessions';
-import movieSessionsSaga from './sagas/sagasMovieSessions';
-import mainPageReducer from './reducers/reducersMainPage';
-import mainPageSaga from './sagas/sagasMainPage';
-import filmDescriptionReducer from './reducers/filmDescriptionReducer';
-import filmDescriptionSaga from './sagas/filmDescriptionSaga';
-import cinemaReducer from './reducers/reducersCinema';
-import cinemaSaga from './sagas/cinemaSaga';
-
+import mainPageReducer, { mainPageSaga } from './ducks/mainPage';
+import cinemaReducer, { cinemaSaga } from './ducks/cinema';
+import filmDescriptionReducer, { filmDescriptionSaga } from './ducks/filmDescription';
+import movieSessionsReducer, { movieSessionsSaga } from './ducks/movieSessions';
+import sessionListReducer, { sessionListSaga } from './ducks/sessionList';
+import sessionTimeReducer, { sessionTimeSaga } from './ducks/sessionTime';
 const sagaMiddleware = createSagaMiddleware();
 
 const rootReducer = combineReducers({

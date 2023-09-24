@@ -1,40 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-
-import '../index.css';
 import { Row, Col, Button } from 'react-bootstrap';
-import {CinemaScreen, HomeButton, StyledButton, StyledContainer} from '../styled/Cinema';
+import { CinemaScreen, HomeButton, StyledButton, StyledContainer } from '../styled/Cinema';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Cinema = () => {
   const { date, selectedSession } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const availableSeats = useSelector((state) => state.cinema.availableSeats);
+  const availableSeats = useSelector((state) => state.cinema.availableSeats) || []; // Initialize as an empty array
   const selectedSeats = useSelector((state) => state.cinema.selectedSeats);
 
-
   const [isAlertActive, setIsAlertActive] = useState(false);
-
 
   useEffect(() => {
     // Dispatch an action to fetch available seats.
     dispatch({ type: 'FETCH_AVAILABLE_SEATS' });
   }, [dispatch]);
 
-
   const isSeatBooked = (seat) => {
     return selectedSeats.includes(seat);
   };
 
   const handleSeatSelect = (seat) => {
-      dispatch({ type: 'TOGGLE_SELECTED_SEAT', payload: seat });
-
+    dispatch({ type: 'TOGGLE_SELECTED_SEAT', payload: seat });
   };
 
   const handleBookSeats = () => {
     alert(`Booked seats: ${selectedSeats.join(', ')} for ${selectedSession}`);
-    setIsAlertActive(true)
+    setIsAlertActive(true);
   };
 
   const areSeatsSelected = selectedSeats.length > 0;
@@ -43,13 +37,12 @@ const Cinema = () => {
     navigate('/');
   };
 
-
   return (
     <StyledContainer>
-      <h4>You selected film for {date}</h4>
+      <h4>You selected a film for {date}</h4>
       <h2>Just choose a seat</h2>
       <Row className="seat-container">
-      <CinemaScreen className="cinema-screen">Cinema Screen</CinemaScreen>
+        <CinemaScreen className="cinema-screen">Cinema Screen</CinemaScreen>
         {availableSeats.map((seat) => (
           <Col key={seat} xs={2}>
             <StyledButton
@@ -63,22 +56,21 @@ const Cinema = () => {
         ))}
       </Row>
       <div className="confirm-btn">
-        <Button 
-        variant="primary" 
-        onClick={handleBookSeats}
-        disabled={!areSeatsSelected}
+        <Button
+          variant="primary"
+          onClick={handleBookSeats}
+          disabled={!areSeatsSelected}
         >
-        {areSeatsSelected ? 'Toggle Selected Seats Success' : 'No Seats Selected'}
+          {areSeatsSelected ? 'Toggle Selected Seats Success' : 'No Seats Selected'}
         </Button>
         {isAlertActive && (
           <HomeButton variant="info" onClick={handleGoMainPage}>
             Home
           </HomeButton>
-                  )}
+        )}
       </div>
     </StyledContainer>
   );
 };
 
 export default Cinema;
-

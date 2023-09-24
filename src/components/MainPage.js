@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { StyledContainer, StyledRow } from '../styled/MainPage';
 import MovieSessions from './MovieSessions';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPosters } from '../redux/actions/actionsMainPage';
+import { fetchPosters } from '../redux/ducks/mainPage';
 
 const MainPage = () => {
   const posters = useSelector((state) => state.mainPage.posters);

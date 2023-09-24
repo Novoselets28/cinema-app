@@ -3,13 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import FilmBox from './FilmBox';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { StyledContainer, StyledRow } from '../styled/SessionList';
+import { fetchFilmsList } from '../redux/ducks/sessionList';
 
 const SessionList = () => {
   const films = useSelector((state) => state.sessionList.films);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({type: 'FETCH_FILMS'});
+    dispatch(fetchFilmsList());
   }, [dispatch]);
 
   return (

@@ -4,7 +4,7 @@ import '../styled/MovieSessions.jsx'
 import { StyledButton, StyledContainer } from '../styled/MovieSessions.jsx';
 import { Card } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAvailableDates } from '../redux/actions/actionsMovieSessions.js';
+import { fetchAvailableDates } from '../redux/ducks/movieSessions.js';
 
 const MovieSessions = () => {
   const navigate = useNavigate();

@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Button, Row, Col } from 'react-bootstrap';
 import { StyledContainer } from '../styled/FilmDescription';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchFilmData } from '../redux/actions/actionsFilmDescription';
+import { fetchFilmData } from '../redux/ducks/filmDescription';
 
 const FilmDescription = () => {
     const { filmTitle } = useParams();
