@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
+import { Button, Card, Col, Modal } from 'react-bootstrap'
 
 import SessionTime from './SessionTime';
 
-import { Button, Card, Col, Modal } from 'react-bootstrap'
 import { StyledCard } from '../styled/FilmBox';
 
 const FilmBox = ({Title, Poster}) => {
@@ -36,8 +36,6 @@ const FilmBox = ({Title, Poster}) => {
       const handlePosterClick = () => {
         navigate(`/${Title}`);
       };
-
-
 
   return (
           <Col key={Title} xs={12} md={6} lg={4} xxl={3}>

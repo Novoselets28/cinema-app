@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import FilmBox from './FilmBox';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+import FilmBox from './FilmBox';
 import { StyledContainer, StyledRow } from '../styled/SessionList';
+
 import { fetchFilmsList } from '../redux/ducks/sessionList';
 
 const SessionList = () => {
@@ -27,6 +29,5 @@ const SessionList = () => {
     </StyledContainer>
   );
 };
-
 
 export default SessionList;

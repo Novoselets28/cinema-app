@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Carousel, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { StyledContainer, StyledRow } from '../styled/MainPage';
-import MovieSessions from './MovieSessions';
-import { useDispatch, useSelector } from 'react-redux';
+
 import { fetchPosters } from '../redux/ducks/mainPage';
+import MovieSessions from './MovieSessions';
 
 const MainPage = () => {
   const posters = useSelector((state) => state.mainPage.posters);

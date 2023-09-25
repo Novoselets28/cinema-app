@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import '../styled/MovieSessions.jsx'
-import { StyledButton, StyledContainer } from '../styled/MovieSessions.jsx';
-import { Card } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { Card } from 'react-bootstrap';
+
+import { StyledButton, StyledContainer } from '../styled/MovieSessions.jsx';
+
+import '../styled/MovieSessions.jsx'
 import { fetchAvailableDates } from '../redux/ducks/movieSessions.js';
 
 const MovieSessions = () => {

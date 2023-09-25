@@ -1,17 +1,16 @@
 import React from 'react';
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes } from 'react-router-dom';
 
-import Cinema from './components/Cinema';
-import SessionList from './components/SessionList';
-import MainPage from './components/MainPage';
+import { Cinema, FilmDescription, MainPage, SessionList } from './components';
 
-import './App.css';
-import FilmDescription from './components/FilmDescription';
+import './styled/global';
+import { GlobalStyle } from './styled/global';
 
 const App = () => {
   return (
-    <div className="App">
+    <div>
       <h1>Movie Ticket Booking</h1>
+      <GlobalStyle/>
       <Routes>
         <Route exact path="/" element={<MainPage />} />
         <Route path="/session-list/:date" element={<SessionList />} />
@@ -21,6 +20,5 @@ const App = () => {
     </div>
   );
 }
-
 
 export default App;

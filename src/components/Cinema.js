@@ -1,26 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Row, Col, Button } from 'react-bootstrap';
-import { CinemaScreen, HomeButton, StyledButton, StyledContainer } from '../styled/Cinema';
 import { useDispatch, useSelector } from 'react-redux';
+import { Row, Col, Button, Container } from 'react-bootstrap';
+
+import { CinemaScreen, HomeButton, StyledContainer } from '../styled/Cinema';
 
 const Cinema = () => {
   const { date, selectedSession } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const availableSeats = useSelector((state) => state.cinema.availableSeats) || []; // Initialize as an empty array
+  const availableSeats = useSelector((state) => state.cinema.availableSeats) || [];
   const selectedSeats = useSelector((state) => state.cinema.selectedSeats);
 
   const [isAlertActive, setIsAlertActive] = useState(false);
 
   useEffect(() => {
-    // Dispatch an action to fetch available seats.
     dispatch({ type: 'FETCH_AVAILABLE_SEATS' });
   }, [dispatch]);
 
-  const isSeatBooked = (seat) => {
-    return selectedSeats.includes(seat);
-  };
+  const isSeatBooked = (seat) => selectedSeats.includes(seat);
+
 
   const handleSeatSelect = (seat) => {
     dispatch({ type: 'TOGGLE_SELECTED_SEAT', payload: seat });
@@ -38,24 +37,24 @@ const Cinema = () => {
   };
 
   return (
-    <StyledContainer>
+    <Container>
       <h4>You selected a film for {date}</h4>
       <h2>Just choose a seat</h2>
-      <Row className="seat-container">
-        <CinemaScreen className="cinema-screen">Cinema Screen</CinemaScreen>
+      <Row>
+        <CinemaScreen>Cinema Screen</CinemaScreen>
         {availableSeats.map((seat) => (
           <Col key={seat} xs={2}>
-            <StyledButton
+            <Button
               variant={isSeatBooked(seat) ? 'success' : 'secondary'}
               onClick={() => handleSeatSelect(seat)}
               className="mb-2"
             >
               {seat}
-            </StyledButton>
+            </Button>
           </Col>
         ))}
       </Row>
-      <div className="confirm-btn">
+      <StyledContainer>
         <Button
           variant="primary"
           onClick={handleBookSeats}
@@ -68,8 +67,8 @@ const Cinema = () => {
             Home
           </HomeButton>
         )}
-      </div>
-    </StyledContainer>
+      </StyledContainer>
+    </Container>
   );
 };
 

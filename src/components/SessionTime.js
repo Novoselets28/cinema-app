@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { StyledButton, StyledContainer } from '../styled/SessionTime';
 import { fetchSessions, setSelectedSession } from '../redux/ducks/sessionTime';
-
 
 const SessionTime = () => {
   const { date } = useParams();
@@ -51,6 +51,5 @@ const SessionTime = () => {
     </StyledContainer>
   );
 };
-
 
 export default SessionTime;
