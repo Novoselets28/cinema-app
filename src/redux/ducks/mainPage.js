@@ -13,7 +13,6 @@ export const fetchPosters = () => ({
     payload: posters,
   });
   
-
   const initialState = {
     posters: [],
   };
@@ -26,8 +25,6 @@ export const fetchPosters = () => ({
         return state;
     }
   };
-    
-
   
   export function* fetchPostersDataSaga() {
     try {

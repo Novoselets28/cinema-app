@@ -13,7 +13,6 @@ export const fetchFilmsList = () => ({
     payload: films,
   });
 
-
   const initialState = {
     films: [],
   };
@@ -26,8 +25,6 @@ export default function sessionListReducer (state = initialState, action){
         return state;
     }
   };
-
-
   
 export function* fetchFilmsListSaga() {
     try {

@@ -13,7 +13,6 @@ export const fetchAvailableDates = () => ({
     payload: dates,
   });
 
-
   const initialState = {
     availableDates: [],
   };
@@ -27,8 +26,6 @@ export default function movieSessionsReducer (state = initialState, action){
     }
   };
 
-
-  
 export function* fetchAvailableDatesSaga() {
     try {
       const response = yield call(fetch, API_URL_SESSIONS);

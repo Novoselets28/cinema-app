@@ -14,7 +14,6 @@ export const toggleSelectedSeat = (seat) => ({
   payload: seat,
 });
 
-
 const initialState = {
   availableSeats: [],
   selectedSeats: [],
@@ -35,7 +34,6 @@ export default function cinemaReducer (state = initialState, action){
       return state;
   }
 };
-
 
 export function* fetchAvailableSeatsSaga() {
   try {

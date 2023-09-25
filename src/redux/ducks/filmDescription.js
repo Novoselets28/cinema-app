@@ -14,8 +14,6 @@ export const setFilmData = (video, description) => ({
   payload: { video, description },
 });
 
-
-
 const initialState = {
   video: '',
   description: '',
@@ -33,8 +31,6 @@ export default function filmDescriptionReducer (state = initialState, action){
       return state;
   }
 };
-
-
 
 export function* fetchFilmDataSaga(action) {
   try {
