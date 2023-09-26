@@ -4,7 +4,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Button, Row, Col } from 'react-bootstrap';
 
 import { StyledContainer } from '../styled/FilmDescription';
-
 import { fetchFilmData } from '../redux/ducks/filmDescription';
 
 const FilmDescription = () => {
