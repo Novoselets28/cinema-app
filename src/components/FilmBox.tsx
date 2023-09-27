@@ -5,7 +5,6 @@ import { Button, Card, Col, Modal } from 'react-bootstrap'
 import SessionTime from './SessionTime';
 import StyledCard from '../styled/FilmBox';
 
-
 interface FilmBoxProps {
   Title: string;
   Poster: string;

@@ -1,4 +1,3 @@
-// global.d.ts
 declare module 'global' {
     export const colors: {
       main: string;
