@@ -68,11 +68,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-// Export additional types or interfaces if needed
-// For example:
-// export interface MyType {
-//   ...
-// }
 
 
 

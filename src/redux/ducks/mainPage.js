@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { API_URL_LIST_OF_FILM } from '../../api.js';
+import { API_URL_LIST_OF_FILM } from '../../api';
 
 export const FETCH_POSTERS = 'FETCH_POSTERS';
 export const SET_POSTERS = 'SET_POSTERS';

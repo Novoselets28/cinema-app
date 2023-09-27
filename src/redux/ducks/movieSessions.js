@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { API_URL_SESSIONS } from '../../api.js';
+import { API_URL_SESSIONS } from '../../api';
 
 export const FETCH_AVAILABLE_DATES = 'FETCH_AVAILABLE_DATES';
 export const SET_AVAILABLE_DATES = 'SET_AVAILABLE_DATES';

@@ -3,12 +3,17 @@ import { useLocation, useNavigate } from 'react-router';
 import { Button, Card, Col, Modal } from 'react-bootstrap'
 
 import SessionTime from './SessionTime';
+import StyledCard from '../styled/FilmBox';
 
-import { StyledCard } from '../styled/FilmBox';
 
-const FilmBox = ({Title, Poster}) => {
+interface FilmBoxProps {
+  Title: string;
+  Poster: string;
+}
 
-  const [showPopup, setShowPopup] = useState(false);
+const FilmBox: React.FC<FilmBoxProps> = ({Title, Poster}) => {
+
+  const [showPopup, setShowPopup] = useState<boolean>(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -59,7 +64,7 @@ const FilmBox = ({Title, Poster}) => {
                 <Modal.Body className='mx-auto'>
                     <img className='card-img-top' src={Poster} alt={Title}></img>
                     <h3>{Title}</h3>
-                    <SessionTime/>
+                    <SessionTime date={''}/>
                 </Modal.Body>
               </Modal>
             </StyledCard>

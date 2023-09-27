@@ -4,21 +4,30 @@ import { API_URL_AVAILABLE_SESSION } from '../../api';
 export const FETCH_SESSIONS = 'FETCH_SESSIONS';
 export const SET_SELECTED_SESSION = 'SET_SELECTED_SESSION';
 
-export const fetchSessions = () => ({
+export const fetchSessions = (): { type: string } => ({
   type: FETCH_SESSIONS,
 });
 
-export const setSelectedSession = (session) => ({
+export const setSelectedSession = (session: any): { type: string, payload: any } => ({
   type: SET_SELECTED_SESSION,
   payload: session,
 });
 
-const initialState = {
+interface SessionTimeState {
+  sessions: any[];
+  selectedSession: any;
+}
+
+
+const initialState: SessionTimeState = {
   sessions: [],
   selectedSession: null,
 };
 
-export default function sessionTimeReducer (state = initialState, action){
+export default function sessionTimeReducer(
+  state: SessionTimeState = initialState,
+  action: { type: string; payload: any }
+): SessionTimeState {
   switch (action.type) {
     case 'SET_SESSIONS':
       return { ...state, sessions: action.payload };
@@ -27,22 +36,24 @@ export default function sessionTimeReducer (state = initialState, action){
     default:
       return state;
   }
-};
+}
 
-export function* fetchSessionsSaga() {
+export function* fetchSessionsSaga(): Generator {
   try {
-    const response = yield call(fetch, API_URL_AVAILABLE_SESSION);
+    const response: any = yield call(fetch as any, API_URL_AVAILABLE_SESSION);
     if (!response.ok) {
       throw new Error(`HTTP Error! Status: ${response.status}`);
     }
-    const data = yield response.json();
-    yield put({ type: 'SET_SESSIONS', payload: data.sessions });
+    const data: any = yield response.json();
+    if (data && data.sessions) {
+      yield put({ type: 'SET_SESSIONS', payload: data.sessions });
+    }
   } catch (error) {
     console.error('Error fetching data:', error);
   }
 }
 
-export function* sessionTimeSaga() {
+export function* sessionTimeSaga(): Generator {
   yield takeEvery(FETCH_SESSIONS, fetchSessionsSaga);
 }
 
