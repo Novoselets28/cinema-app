@@ -10,18 +10,15 @@ const App = () => {
   return (
     <div>
       <h1>Movie Ticket Booking</h1>
-      <GlobalStyle/>
+      <GlobalStyle />
       <Routes>
-        <Route exact path="/" element={<MainPage />} />
-        <Route path="/session-list/:date" element={<SessionList />} />
-        <Route path="/cinema/:date/:selectedSession" element={<Cinema />} />
+        <Route path="/" element={<MainPage mainPage={''} selectedSession={''} />} />
+        <Route path="/session-list/:date" element={<SessionList date={''} />} />
+        <Route path="/cinema/:date/:selectedSession" element={<Cinema date={''} selectedSession={''} />} />
         <Route path="/:filmTitle" element={<FilmDescription />} />
       </Routes>
     </div>
   );
-}
+};
 
 export default App;
-
-
-
