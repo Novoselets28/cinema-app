@@ -49,4 +49,3 @@ export function* fetchPostersDataSaga(): Generator {
 export function* mainPageSaga() {
   yield takeEvery(FETCH_POSTERS, fetchPostersDataSaga);
 }
-

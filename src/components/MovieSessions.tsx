@@ -5,7 +5,6 @@ import { Card } from 'react-bootstrap';
 
 import { StyledButton, StyledContainer } from '../styled/MovieSessions';
 
-import '../styled/MovieSessions';
 import { fetchAvailableDates } from '../redux/ducks/movieSessions';
 
 interface RootState {
