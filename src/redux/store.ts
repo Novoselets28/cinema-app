@@ -11,7 +11,7 @@ export type RootState = ReturnType<typeof rootReducer>;
 
 const sagaMiddleware = createSagaMiddleware();
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   mainPage: mainPageReducer,
   sessionTime: sessionTimeReducer,
   sessionList: sessionListReducer,

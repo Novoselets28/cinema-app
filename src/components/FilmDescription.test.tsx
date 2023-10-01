@@ -8,7 +8,7 @@ import FilmDescription from './FilmDescription';
 test('FilmDescription component', () => {
   const { container } = render(
     <Provider store={store}>
-      <MemoryRouter>
+      <MemoryRouter initialEntries={['/Барби']}>
         <Routes>
           <Route path="/:filmTitle" element={<FilmDescription />} />
         </Routes>
