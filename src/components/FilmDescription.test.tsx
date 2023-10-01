@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { MemoryRouter, Routes, Route } from 'react-router-dom'; // Use MemoryRouter
+import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from '../redux/store';
 import FilmDescription from './FilmDescription';
@@ -15,6 +15,5 @@ test('FilmDescription component', () => {
       </MemoryRouter>
     </Provider>
   );
-
   expect(container).toMatchSnapshot();
 });

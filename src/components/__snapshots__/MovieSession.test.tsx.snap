@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders dates correctly 1`] = `
+<div>
+  <div
+    class="sc-gEvEer gyOvpF movie-sessions-page container"
+  >
+    <div
+      class="card-header"
+    >
+      Available dates for booking tickets
+    </div>
+    <button
+      class="sc-aXZVg biAHXA transparent-button btn btn-dark"
+      type="button"
+    >
+      Wed 6
+    </button>
+    <button
+      class="sc-aXZVg biAHXA transparent-button btn btn-dark"
+      type="button"
+    >
+      Thu 7
+    </button>
+    <button
+      class="sc-aXZVg biAHXA transparent-button btn btn-dark"
+      type="button"
+    >
+      Fri 8
+    </button>
+    <button
+      class="sc-aXZVg biAHXA transparent-button btn btn-dark"
+      type="button"
+    >
+      Sat 9
+    </button>
+    <button
+      class="sc-aXZVg biAHXA transparent-button btn btn-dark"
+      type="button"
+    >
+      Sun 10
+    </button>
+    <button
+      class="sc-aXZVg biAHXA transparent-button btn btn-dark"
+      type="button"
+    >
+      Mon 11
+    </button>
+  </div>
+</div>
+`;

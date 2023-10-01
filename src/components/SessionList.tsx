@@ -44,5 +44,3 @@ const SessionList: React.FC<SessionListProps> = () => {
 };
 
 export default SessionList;
-
-

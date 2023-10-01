@@ -45,4 +45,3 @@ const FilmDescription: React.FC = () => {
 };
 
 export default FilmDescription;
-
