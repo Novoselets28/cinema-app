@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StyledContainer should have expected styles 1`] = `
+<div
+  class="sc-aXZVg gAHHnW container"
+  data-testid="styled-container"
+/>
+`;

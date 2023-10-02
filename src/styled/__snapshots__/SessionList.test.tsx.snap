@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Styled Components StyledCol should have expected styles 1`] = `
+<div
+  class="sc-eqUAAy iUsOYi col"
+  data-testid="styled-col"
+/>
+`;
+
+exports[`Styled Components StyledContainer should have expected styles 1`] = `
+<div
+  class="sc-aXZVg iRblEh container"
+  data-testid="styled-container"
+/>
+`;
+
+exports[`Styled Components StyledRow should have expected styles 1`] = `
+<div
+  class="sc-gEvEer KzsuG row"
+  data-testid="styled-row"
+/>
+`;
