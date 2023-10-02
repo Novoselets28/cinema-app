@@ -3,7 +3,7 @@ import sessionTimeReducer, {
   fetchSessions,
   fetchSessionsSaga,
   setSelectedSession,
-} from './sessionTime'; // Update the import path
+} from './sessionTime';
 import { expectSaga } from 'redux-saga-test-plan';
 import { API_URL_AVAILABLE_SESSION } from '../../api';
 

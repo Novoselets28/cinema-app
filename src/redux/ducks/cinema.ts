@@ -1,11 +1,9 @@
-// Action Typesimport { put, call, takeLeading } from 'redux-saga/effects';
 import { call, put, takeLeading } from 'redux-saga/effects';
 import { API_URL_SEATS } from '../../api';
 
 export const FETCH_AVAILABLE_SEATS = 'FETCH_AVAILABLE_SEATS';
 export const TOGGLE_SELECTED_SEAT = 'TOGGLE_SELECTED_SEAT';
 
-// Action Creators
 export const fetchAvailableSeats = (seats: string[]) => ({
   type: FETCH_AVAILABLE_SEATS,
   payload: seats,
@@ -16,7 +14,6 @@ export const toggleSelectedSeat = (seat: string) => ({
   payload: seat,
 });
 
-// Reducer
 interface CinemaState {
   availableSeats: string[];
   selectedSeats: string[];
@@ -50,10 +47,6 @@ export default function cinemaReducer(
       return state;
   }
 }
-
-
-// Saga
-
 
 export function* fetchAvailableSeatsSaga(): Generator {
   try {

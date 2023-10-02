@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { rootReducer } from './store'; // Import the rootReducer from the store configuration file
+import { rootReducer } from './store';
 
 describe('Redux Store Configuration', () => {
   it('should create the Redux store with reducers and sagas', () => {

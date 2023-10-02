@@ -5,7 +5,6 @@ import MainPage from './MainPage';
 import store from '../redux/store';
 import { MemoryRouter } from 'react-router';
 
-
 test('MainPage renders correctly', () => {
   const { container } = render(
     <Provider store={store}>

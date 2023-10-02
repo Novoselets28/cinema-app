@@ -10,4 +10,3 @@ declare module 'global' {
       large: string;
     };
   }
-  

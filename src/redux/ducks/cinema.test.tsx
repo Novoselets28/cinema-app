@@ -1,7 +1,7 @@
 import cinemaReducer, {
     fetchAvailableSeats,
     toggleSelectedSeat,
-  } from './cinema'; // Import your reducer and action creators
+  } from './cinema';
   
   describe('Cinema Reducer', () => {
     it('should return the initial state', () => {
@@ -29,7 +29,7 @@ import cinemaReducer, {
         const action = toggleSelectedSeat(seat);
         expect(cinemaReducer(initialState, action)).toEqual({
           availableSeats: [],
-          selectedSeats: ['A1'], // Expecting 'A1' to be added to the selected seats.
+          selectedSeats: ['A1'],
         });
       });
       
@@ -47,4 +47,3 @@ import cinemaReducer, {
       });
     });
   });
-  

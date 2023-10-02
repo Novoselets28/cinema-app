@@ -17,5 +17,3 @@ export const HomeButton = styled(Button)`
 export const StyledContainer = styled.div`
   margin-top: 5px;
 `;
-
-

@@ -3,7 +3,7 @@ import sessionListReducer, {
   fetchFilmsList,
   fetchFilmsListSaga,
   setFilmsList,
-} from './sessionList'; // Update the import path
+} from './sessionList';
 import { expectSaga } from 'redux-saga-test-plan';
 import { API_URL_LIST_OF_FILM } from '../../api';
 

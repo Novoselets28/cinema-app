@@ -56,4 +56,3 @@ export function* fetchSessionsSaga(): Generator {
 export function* sessionTimeSaga(): Generator {
   yield takeEvery(FETCH_SESSIONS, fetchSessionsSaga);
 }
-

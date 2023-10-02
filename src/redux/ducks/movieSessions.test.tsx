@@ -3,7 +3,7 @@ import movieSessionsReducer, {
   fetchAvailableDates,
   fetchAvailableDatesSaga,
   setAvailableDates,
-} from './movieSessions'; // Update the import path
+} from './movieSessions';
 import { expectSaga } from 'redux-saga-test-plan';
 import { API_URL_SESSIONS } from '../../api';
 

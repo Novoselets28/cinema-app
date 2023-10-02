@@ -9,7 +9,6 @@ describe('Styled Components', () => {
     render(<CinemaScreen data-testid="cinema-screen" />);
     const cinemaScreen = screen.getByTestId('cinema-screen');
 
-    // Use Testing Library's querying methods
     expect(cinemaScreen).toHaveStyle(`
       background-color: ${colors.secondary};
       text-align: center;
@@ -18,7 +17,6 @@ describe('Styled Components', () => {
       margin-bottom: 20px;
     `);
 
-    // Add snapshot assertion
     expect(cinemaScreen).toMatchSnapshot();
   });
 
@@ -26,12 +24,10 @@ describe('Styled Components', () => {
     render(<HomeButton data-testid="home-button" />);
     const homeButton = screen.getByTestId('home-button');
 
-    // Use Testing Library's querying methods
     expect(homeButton).toHaveStyle(`
       margin: 5px;
     `);
 
-    // Add snapshot assertion
     expect(homeButton).toMatchSnapshot();
   });
 
@@ -39,12 +35,10 @@ describe('Styled Components', () => {
     render(<StyledContainer data-testid="styled-container" />);
     const styledContainer = screen.getByTestId('styled-container');
 
-    // Use Testing Library's querying methods
     expect(styledContainer).toHaveStyle(`
       margin-top: 5px;
     `);
 
-    // Add snapshot assertion
     expect(styledContainer).toMatchSnapshot();
   });
 });
