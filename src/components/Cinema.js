@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+
 import '../index.css';
-import {CinemaScreen} from '../styled/Cinema';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import {CinemaScreen, StyledButton} from '../styled/Cinema';
 import {API_URL_SEATS} from '../api';
 
 const Cinema = () => {
@@ -49,13 +50,13 @@ const Cinema = () => {
       <CinemaScreen className="cinema-screen">Cinema Screen</CinemaScreen>
         {availableSeats.map((seat) => (
           <Col key={seat} xs={2}>
-            <Button
+            <StyledButton
               variant={selectedSeats.includes(seat) ? 'success' : 'outline-secondary'}
               onClick={() => handleSeatSelect(seat)}
               className="mb-2"
             >
               {seat}
-            </Button>
+            </StyledButton>
           </Col>
         ))}
       </Row>

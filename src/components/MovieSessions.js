@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styled/MovieSessions.jsx'
-import { StyledButton, StyledContainer } from '../styled/MovieSessions.jsx';
+
 import { Card } from 'react-bootstrap';
+import { StyledButton, StyledContainer } from '../styled/MovieSessions.jsx';
+
+import '../styled/MovieSessions.jsx'
 import { API_URL_SESSIONS } from "../api";
 
 const MovieSessions = () => {

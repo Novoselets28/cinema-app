@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import FilmBox from './FilmBox';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { StyledContainer, StyledRow } from '../styled/SessionList';
 import {API_URL_LIST_OF_FILM} from '../api';
 
