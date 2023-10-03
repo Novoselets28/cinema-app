@@ -1,25 +1,30 @@
-import { put, call, takeEvery } from 'redux-saga/effects';
+import { put, call, takeLeading } from 'redux-saga/effects';
 import { API_URL_SEATS } from '../../api';
 
 export const FETCH_AVAILABLE_SEATS = 'FETCH_AVAILABLE_SEATS';
 export const TOGGLE_SELECTED_SEAT = 'TOGGLE_SELECTED_SEAT';
 
-export const fetchAvailableSeats = (seats) => ({
-  type: FETCH_AVAILABLE_SEATS,
+export const fetchAvailableSeats = (seats: string) => ({
+  type: FETCH_AVAILABLE_SEATS as typeof FETCH_AVAILABLE_SEATS,
   payload: seats,
 });
 
-export const toggleSelectedSeat = (seat) => ({
-  type: TOGGLE_SELECTED_SEAT,
+export const toggleSelectedSeat = (seat: string) => ({
+  type: TOGGLE_SELECTED_SEAT as typeof TOGGLE_SELECTED_SEAT,
   payload: seat,
 });
 
-const initialState = {
+interface CinemaState {
+  availableSeats: string[]
+  selectedSeats: string[];
+}
+
+const initialState: CinemaState = {
   availableSeats: [],
   selectedSeats: [],
 };
 
-export default function cinemaReducer (state = initialState, action){
+export default function cinemaReducer (state:CinemaState = initialState, action: { type: string; payload: any; }){
   switch (action.type) {
     case FETCH_AVAILABLE_SEATS:
       return { ...state, availableSeats: action.payload };
@@ -35,13 +40,14 @@ export default function cinemaReducer (state = initialState, action){
   }
 };
 
-export function* fetchAvailableSeatsSaga() {
+export function* fetchAvailableSeatsSaga(): Generator {
   try {
-    const response = yield call(fetch, API_URL_SEATS);
+    const response: any = yield call(fetch as any, API_URL_SEATS);
+    console.log('Request URL:', API_URL_SEATS);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
-    const data = yield response.json();
+    const data: any = yield response.json();
     if (data && data.seats) {
       yield put(fetchAvailableSeats(data.seats));
     }
@@ -51,7 +57,7 @@ export function* fetchAvailableSeatsSaga() {
 }
 
 export function* cinemaSaga() {
-  yield takeEvery('FETCH_AVAILABLE_SEATS', fetchAvailableSeatsSaga);
+  yield takeLeading('FETCH_AVAILABLE_SEATS', fetchAvailableSeatsSaga);
 }
 
 

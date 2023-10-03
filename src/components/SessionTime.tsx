@@ -4,13 +4,17 @@ import { Button } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { StyledButton, StyledContainer } from '../styled/SessionTime';
 import { fetchSessions, setSelectedSession } from '../redux/ducks/sessionTime';
+import { StyledButton, StyledContainer } from '../styled/SessionTime';
 
-const SessionTime = () => {
-  const { date } = useParams();
-  const sessions = useSelector((state) => state.sessionTime.sessions);
-  const selectedSession = useSelector((state) => state.sessionTime.selectedSession);
+interface SessionTimeProps {
+  date: string;
+}
+
+const SessionTime: React.FC<SessionTimeProps> = () => {
+  const { date } = useParams<{ date: string }>();
+  const sessions: string[] = useSelector((state: any) => state.sessionTime.sessions);
+  const selectedSession: string[] = useSelector((state: any) => state.sessionTime.selectedSession);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -22,7 +26,7 @@ const SessionTime = () => {
     return <div>Loading sessions...</div>;
   }
 
-  const handleTimeSelect = (session) => {
+  const handleTimeSelect = (session: string) => {
         dispatch(setSelectedSession(session));
       };
     

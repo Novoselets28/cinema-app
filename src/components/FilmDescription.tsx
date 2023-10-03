@@ -3,20 +3,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button, Row, Col } from 'react-bootstrap';
 
+import { FilmDescriptionState, fetchFilmData } from '../redux/ducks/filmDescription'; 
 import { StyledContainer } from '../styled/FilmDescription';
 
-import { fetchFilmData } from '../redux/ducks/filmDescription';
+interface FilmDescriptionParams {
+  filmTitle: string;
+  [key: string]: string | undefined;
+}
 
-const FilmDescription = () => {
-    const { filmTitle } = useParams();
-    const dispatch = useDispatch();
-    const { video, description } = useSelector((state) => state.filmDescription);
-  
-    useEffect(() => {
-      dispatch(fetchFilmData(filmTitle));
-    }, [dispatch, filmTitle]);
+const FilmDescription: React.FC = () => {
+  const { filmTitle } = useParams<FilmDescriptionParams>();
+  const dispatch = useDispatch();
+  const { video, description } = useSelector((state: { filmDescription: FilmDescriptionState }) => state.filmDescription);
 
-  const navigate = useNavigate()
+  useEffect(() => {
+    dispatch(fetchFilmData(filmTitle || ''));
+  }, [dispatch, filmTitle]);
+
+  const navigate = useNavigate();
   const goBack = () => navigate(-1);
 
   return (
@@ -41,3 +45,4 @@ const FilmDescription = () => {
 };
 
 export default FilmDescription;
+

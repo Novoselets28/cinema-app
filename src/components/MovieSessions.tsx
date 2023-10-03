@@ -3,30 +3,35 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 
-import { StyledButton, StyledContainer } from '../styled/MovieSessions.jsx';
+import { StyledButton, StyledContainer } from '../styled/MovieSessions';
 
-import '../styled/MovieSessions.jsx'
-import { fetchAvailableDates } from '../redux/ducks/movieSessions.js';
+import { fetchAvailableDates } from '../redux/ducks/movieSessions';
 
-const MovieSessions = () => {
+interface RootState {
+  movieSessions: {
+    availableDates: string[];
+  };
+}
+
+const MovieSessions: React.FC = () => {
   const navigate = useNavigate();
-  const availableDates = useSelector((state) => state.movieSessions.availableDates);
+  const availableDates = useSelector((state: RootState) => state.movieSessions.availableDates);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchAvailableDates());
   }, [dispatch]);
 
-  const formatDateToDayOfWeek = (dateString) => {
-    const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    const date = new Date(dateString);
-    const dayOfWeek = daysOfWeek[date.getUTCDay()];
-    const dayOfMonth = date.getDate();
+  const formatDateToDayOfWeek = (dateString: string): string => {
+    const daysOfWeek: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const date: Date = new Date(dateString);
+    const dayOfWeek: string = daysOfWeek[date.getUTCDay()];
+    const dayOfMonth: number = date.getDate();
 
     return `${dayOfWeek} ${dayOfMonth}`;
   };
 
-  const handleDateSelect = (date) => {
+  const handleDateSelect = (date: string): void => {
     navigate(`/session-list/${date}`);
   };
 
@@ -34,7 +39,7 @@ const MovieSessions = () => {
     <StyledContainer className="movie-sessions-page">
       <Card.Header>Available dates for booking tickets</Card.Header>
       <>
-        {availableDates.map((date, index) => (
+        {availableDates.map((date: string, index: number) => (
           <StyledButton
             variant="dark"
             key={index}
