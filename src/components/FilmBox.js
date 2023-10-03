@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
+import { Button, Card, Col, Modal } from 'react-bootstrap'
 
 import SessionTime from './SessionTime';
 
-import { Button, Card, Col, Modal } from 'react-bootstrap'
+import { StyledCard } from '../styled/FilmBox';
 
 const FilmBox = ({Title, Poster}) => {
 
-    const [showPopup, setShowPopup] = useState(false);
-    const location = useLocation();
-    const navigate = useNavigate();
+  const [showPopup, setShowPopup] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
     useEffect(() => {
         const storedPopupState = localStorage.getItem(`popupState-${Title}`);
@@ -32,15 +33,19 @@ const FilmBox = ({Title, Poster}) => {
         navigate('');
       };
 
+      const handlePosterClick = () => {
+        navigate(`/${Title}`);
+      };
 
   return (
           <Col key={Title} xs={12} md={6} lg={4} xxl={3}>
-            <Card className="mb-3">
+            <StyledCard>
               <Card.Img
                 className="poster"
                 variant="top"
                 src={Poster}
                 alt={Title}
+                onClick={handlePosterClick}
               />
               <Card.Body >
                 <Card.Title>{Title}</Card.Title>
@@ -50,7 +55,6 @@ const FilmBox = ({Title, Poster}) => {
               </Card.Body>
               <Modal show={showPopup} onHide={handleClosePopup}>
                 <Modal.Header closeButton>
-                    <Modal.Title></Modal.Title>
                 </Modal.Header>
                 <Modal.Body className='mx-auto'>
                     <img className='card-img-top' src={Poster} alt={Title}></img>
@@ -58,7 +62,7 @@ const FilmBox = ({Title, Poster}) => {
                     <SessionTime/>
                 </Modal.Body>
               </Modal>
-            </Card>
+            </StyledCard>
           </Col>
   )
 }

@@ -1,33 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
 import { Card } from 'react-bootstrap';
+
 import { StyledButton, StyledContainer } from '../styled/MovieSessions.jsx';
 
 import '../styled/MovieSessions.jsx'
-import { API_URL_SESSIONS } from "../api";
+import { fetchAvailableDates } from '../redux/ducks/movieSessions.js';
 
 const MovieSessions = () => {
   const navigate = useNavigate();
+  const availableDates = useSelector((state) => state.movieSessions.availableDates);
+  const dispatch = useDispatch();
 
-  const [availableDates, setAvailableDates] = useState([]);
   useEffect(() => {
-    fetch(API_URL_SESSIONS)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        if (data && data.dates) {
-          setAvailableDates(data.dates);
-        }
-      })
-      .catch((error) => {
-        console.error('Error fetching available dates:', error);
-      });
-  }, []);
+    dispatch(fetchAvailableDates());
+  }, [dispatch]);
 
   const formatDateToDayOfWeek = (dateString) => {
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];

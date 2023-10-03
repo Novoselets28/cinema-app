@@ -1,73 +1,75 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Row, Col, Button, Container } from 'react-bootstrap';
 
-import '../index.css';
-import { Container, Row, Col, Button } from 'react-bootstrap';
-import {CinemaScreen, StyledButton} from '../styled/Cinema';
-import {API_URL_SEATS} from '../api';
+import { CinemaScreen, HomeButton, StyledContainer } from '../styled/Cinema';
 
 const Cinema = () => {
   const { date, selectedSession } = useParams();
-  const [selectedSeats, setSelectedSeats] = useState([]);
-  const [availableSeats, setAvailableSeats] = useState([]);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const availableSeats = useSelector((state) => state.cinema.availableSeats) || [];
+  const selectedSeats = useSelector((state) => state.cinema.selectedSeats);
+
+  const [isAlertActive, setIsAlertActive] = useState(false);
 
   useEffect(() => {
-    fetch(API_URL_SEATS)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        if (data && data.seats) {
-          setAvailableSeats(data.seats);
-        }
-      })
-      .catch((error) => {
-        console.error('Error fetching available seats:', error);
-      });
-  }, []);
-  
+    dispatch({ type: 'FETCH_AVAILABLE_SEATS' });
+  }, [dispatch]);
+
+  const isSeatBooked = (seat) => selectedSeats.includes(seat);
+
 
   const handleSeatSelect = (seat) => {
-    if (selectedSeats.includes(seat)) {
-      setSelectedSeats(selectedSeats.filter((selectedSeat) => selectedSeat !== seat));
-    } else {
-      setSelectedSeats([...selectedSeats, seat]);
-    }
+    dispatch({ type: 'TOGGLE_SELECTED_SEAT', payload: seat });
   };
 
   const handleBookSeats = () => {
     alert(`Booked seats: ${selectedSeats.join(', ')} for ${selectedSession}`);
+    setIsAlertActive(true);
+  };
+
+  const areSeatsSelected = selectedSeats.length > 0;
+
+  const handleGoMainPage = () => {
+    navigate('/');
   };
 
   return (
     <Container>
-      <h4>{date}</h4>
-      <h2>Select Seats</h2>
-      <Row className="seat-container">
-      <CinemaScreen className="cinema-screen">Cinema Screen</CinemaScreen>
+      <h4>You selected a film for {date}</h4>
+      <h2>Just choose a seat</h2>
+      <Row>
+        <CinemaScreen>Cinema Screen</CinemaScreen>
         {availableSeats.map((seat) => (
           <Col key={seat} xs={2}>
-            <StyledButton
-              variant={selectedSeats.includes(seat) ? 'success' : 'outline-secondary'}
+            <Button
+              variant={isSeatBooked(seat) ? 'success' : 'secondary'}
               onClick={() => handleSeatSelect(seat)}
               className="mb-2"
             >
               {seat}
-            </StyledButton>
+            </Button>
           </Col>
         ))}
       </Row>
-      <div className="confirm-btn">
-        <Button variant="primary" onClick={handleBookSeats}>
-          Book Selected Seats
+      <StyledContainer>
+        <Button
+          variant="primary"
+          onClick={handleBookSeats}
+          disabled={!areSeatsSelected}
+        >
+          {areSeatsSelected ? 'Toggle Selected Seats Success' : 'No Seats Selected'}
         </Button>
-      </div>
+        {isAlertActive && (
+          <HomeButton variant="info" onClick={handleGoMainPage}>
+            Home
+          </HomeButton>
+        )}
+      </StyledContainer>
     </Container>
   );
 };
 
 export default Cinema;
-

@@ -1,31 +1,33 @@
-// SessionList.js
-import React, { useEffect, useState } from 'react';
-import FilmBox from './FilmBox';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import FilmBox from './FilmBox';
 import { StyledContainer, StyledRow } from '../styled/SessionList';
-import {API_URL_LIST_OF_FILM} from '../api';
+
+import { fetchFilmsList } from '../redux/ducks/sessionList';
 
 const SessionList = () => {
-  const [films, setFilms] = useState([]);
+  const films = useSelector((state) => state.sessionList.films);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    // Fetch data from the API
-    fetch(API_URL_LIST_OF_FILM)
-      .then((response) => response.json())
-      .then((data) => setFilms(data.list))
-      .catch((error) => console.error('Error fetching data:', error));
-  }, []);
+    dispatch(fetchFilmsList());
+  }, [dispatch]);
 
   return (
     <StyledContainer className="center-grid">
       <StyledRow>
-        {films.map((filmReq) => (
-          <FilmBox key={filmReq.id} {...filmReq} />
-        ))}
+      {films.length === 0 ? (
+          <div>Loading...</div>
+        ) : (
+          films.map((filmReq) => (
+            <FilmBox key={filmReq.id} {...filmReq} />
+          ))
+        )}
       </StyledRow>
     </StyledContainer>
   );
-}
+};
 
 export default SessionList;

@@ -1,51 +1,51 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Button } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { Button } from 'react-bootstrap';
 import { StyledButton, StyledContainer } from '../styled/SessionTime';
-import { API_URL_AVAILABLE_SESSION } from "../api";
-import '../styled/SessionList.jsx';
-
-
+import { fetchSessions, setSelectedSession } from '../redux/ducks/sessionTime';
 
 const SessionTime = () => {
-  const {date} = useParams()
-  const [sessions, setSessions] = useState([]);
-  const [selectedSession, setSelectedSession] = useState(null);
+  const { date } = useParams();
+  const sessions = useSelector((state) => state.sessionTime.sessions);
+  const selectedSession = useSelector((state) => state.sessionTime.selectedSession);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(API_URL_AVAILABLE_SESSION)
-      .then((response) => response.json())
-      .then((data) => setSessions(data.sessions))
-      .catch((error) => console.error('Error fetching data:', error));
-  }, []);
+    dispatch(fetchSessions());
+  }, [dispatch]);
+
+  if (sessions.length === 0) {
+    return <div>Loading sessions...</div>;
+  }
 
   const handleTimeSelect = (session) => {
-    setSelectedSession(session);
-  };
-
-  const handleBookClick = () => {
-    if (selectedSession) {
-      navigate(`/cinema/${date}/${selectedSession}`);
-    }
-  };
+        dispatch(setSelectedSession(session));
+      };
+    
+      const handleBookClick = () => {
+        if (selectedSession) {
+          navigate(`/cinema/${date}/${selectedSession}`);
+        }
+      };
 
   return (
     <StyledContainer>
-        {sessions.map((session, index) => (
-          <StyledButton
-            key={index}
-            className="transparent-button"
-            onClick={() => handleTimeSelect(session)}
-          >
-            {session}
-          </StyledButton>
-        ))}
+      {sessions.map((session, index) => (
+        <StyledButton
+          key={index}
+          className="transparent-button"
+          onClick={() => handleTimeSelect(session)}
+        >
+          {session}
+        </StyledButton>
+      ))}
       {selectedSession && (
         <Button variant="success" onClick={handleBookClick}>
-            Book
+          Book
         </Button>
       )}
     </StyledContainer>
