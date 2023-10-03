@@ -78,4 +78,3 @@ const Cinema: React.FC<CinemaProps> = () => {
 };
 
 export default Cinema;
-
