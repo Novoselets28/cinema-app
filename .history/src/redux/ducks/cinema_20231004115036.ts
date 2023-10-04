@@ -59,3 +59,5 @@ export function* fetchAvailableSeatsSaga(): Generator {
 export function* cinemaSaga() {
   yield takeLeading('FETCH_AVAILABLE_SEATS', fetchAvailableSeatsSaga);
 }
+
+

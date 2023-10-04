@@ -6,12 +6,12 @@ export const SET_FILM_DATA = 'SET_FILM_DATA';
 
 export const fetchFilmData = (filmTitle: string) => ({
   type: FETCH_FILM_DATA as typeof FETCH_FILM_DATA,
-  payload: filmTitle
+  payload: filmTitle,
 });
 
 export const setFilmData = (video: string, description: string) => ({
   type: SET_FILM_DATA as typeof SET_FILM_DATA,
-  payload: { video, description }
+  payload: { video, description },
 });
 
 interface FilmDescriptionState {
@@ -21,7 +21,7 @@ interface FilmDescriptionState {
 
 const initialState: FilmDescriptionState = {
   video: '',
-  description: ''
+  description: '',
 };
 
 export type { FilmDescriptionState };
@@ -35,7 +35,7 @@ export default function filmDescriptionReducer(
       return {
         ...state,
         video: action.payload.video,
-        description: action.payload.description
+        description: action.payload.description,
       };
     default:
       return state;

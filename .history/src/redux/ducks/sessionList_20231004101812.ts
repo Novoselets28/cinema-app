@@ -11,19 +11,19 @@ export interface SessionListState {
 
 export const fetchFilmsList = (): { type: string } => {
   return ({
-    type: FETCH_FILMS_LIST
+    type: FETCH_FILMS_LIST,
   });
 };
 
 export const setFilmsList = (films: any): { type: string, payload: any } => ({
   type: SET_FILMS_LIST,
-  payload: films
+  payload: films,
 });
 
 
 
 const initialState: SessionListState = {
-  films: []
+  films: [],
 };
 
 export default function sessionListReducer(

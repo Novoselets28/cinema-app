@@ -27,7 +27,7 @@
     "redux": "^4.2.1",
     "redux-saga": "^1.2.3",
     "styled-components": "^5.3.11",
-    "typescript": "^5.0.1",
+    "typescript": "^5.2.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -47,8 +47,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "eslint-plugin-import": "^2.28.1"
   }
 }

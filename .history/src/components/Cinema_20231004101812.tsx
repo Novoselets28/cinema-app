@@ -31,7 +31,6 @@ const Cinema: React.FC<CinemaProps> = () => {
   };
 
   const handleBookSeats = ():void => {
-    // eslint-disable-next-line no-alert
     alert(`Booked seats: ${selectedSeats.join(', ')} for ${selectedSession}`);
     setIsAlertActive(true);
   };

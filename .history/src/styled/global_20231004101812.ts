@@ -3,12 +3,12 @@ import { createGlobalStyle } from 'styled-components';
 export const colors = {
   main: '#393939',
   primary: 'white',
-  secondary: '#000'
+  secondary: '#000',
 };
 
 export const fontSize = {
   medium: '24px',
-  large: '34px'
+  large: '34px',
 };
 
 export const GlobalStyle = createGlobalStyle`

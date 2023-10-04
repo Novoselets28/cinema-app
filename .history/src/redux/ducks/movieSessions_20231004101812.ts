@@ -9,20 +9,19 @@ export interface MovieSessionsState {
 }
 
 export const fetchAvailableDates = (): { type: string } => ({
-  type: FETCH_AVAILABLE_DATES
+  type: FETCH_AVAILABLE_DATES,
 });
   
   export const setAvailableDates = (dates: any): { type: string, payload: any } => ({
     type: SET_AVAILABLE_DATES,
-    payload: dates
+    payload: dates,
   });
 
   const initialState: MovieSessionsState = {
-    availableDates: []
+    availableDates: [],
   };
   
-// eslint-disable-next-line max-len
-export default function movieSessionsReducer (state: MovieSessionsState = initialState, action: { type: any; payload: any; }) {
+export default function movieSessionsReducer (state: MovieSessionsState = initialState, action: { type: any; payload: any; }){
     switch (action.type) {
       case 'SET_AVAILABLE_DATES':
         return { ...state, availableDates: action.payload };

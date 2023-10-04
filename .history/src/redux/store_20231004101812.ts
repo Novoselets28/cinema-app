@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
   sessionList: sessionListReducer,
   movieSessions: movieSessionsReducer,
   filmDescription: filmDescriptionReducer,
-  cinema: cinemaReducer
+  cinema: cinemaReducer,
 });
 
 const store = createStore(
