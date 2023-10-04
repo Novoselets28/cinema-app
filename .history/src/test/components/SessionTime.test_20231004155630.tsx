@@ -17,7 +17,6 @@ test('should check if loading message renders when sessions are empty', () => {
       </MemoryRouter>
     </Provider>
   );
-  
   expect(container).toMatchSnapshot();
 });
 
@@ -32,6 +31,6 @@ test('should check if session buttons renders when sessions are available', () =
       </MemoryRouter>
     </Provider>
   );
-
+  
   expect(container).toMatchSnapshot();
 });

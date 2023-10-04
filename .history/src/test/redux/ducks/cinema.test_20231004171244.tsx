@@ -29,7 +29,6 @@ import cinemaReducer, {
         };
         const seat = 'A1';
         const action = toggleSelectedSeat(seat);
-        
         expect(cinemaReducer(initialState, action)).toEqual({
           availableSeats: [],
           selectedSeats: ['A1'],

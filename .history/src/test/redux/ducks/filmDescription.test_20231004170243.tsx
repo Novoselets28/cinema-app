@@ -7,9 +7,6 @@ import filmDescriptionReducer, { fetchFilmData, fetchFilmDataSaga, setFilmData }
 const filmTitle = 'Film 1';
 const video = 'film1.mp4';
 const description = 'Description of Film 1';
-const responseData = {
-      films: [{ title: filmTitle, video, descr: description }],
-    };
 
 describe('filmDescription actions', () => {
   it('should create an action to fetch film data', () => {
@@ -36,6 +33,8 @@ describe('filmDescription actions', () => {
       video: '',
       description: '',
     };
+    const video = 'film1.mp4';
+    const description = 'Description of Film 1';
     const action = setFilmData(video, description);
     const expectedState = {
       video: 'film1.mp4',
@@ -46,6 +45,10 @@ describe('filmDescription actions', () => {
   });
   
   it('should fetch film data and dispatch setFilmData action', () => {
+
+    const responseData = {
+      films: [{ title: filmTitle, video, descr: description }],
+    };
 
     return expectSaga(fetchFilmDataSaga, fetchFilmData(filmTitle))
       .provide([[call(fetch, API_URL_SESSION_DETAILS), { ok: true, json: () => responseData }]])

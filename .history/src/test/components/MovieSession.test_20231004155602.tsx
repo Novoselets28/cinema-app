@@ -11,21 +11,20 @@ const sampleAvailableDates = ['Wed 6', 'Thu 7', 'Fri 8'];
 
 test('should check if dates renders correctly', async () => {
 
-  const { container } = render(
-    <Provider store={store}>
-      <BrowserRouter>
-        <MovieSessions />
-      </BrowserRouter>
-    </Provider>
-  );
+    const { container } = render(
+      <Provider store={store}>
+        <BrowserRouter>
+          <MovieSessions />
+        </BrowserRouter>
+      </Provider>
+    );
   
-  await waitFor(() => {
-    sampleAvailableDates.forEach((formattedDate) => {
-      const dateElement = screen.getByText(formattedDate);
-      
-      expect(dateElement).toBeInTheDocument();
+    await waitFor(() => {
+      sampleAvailableDates.forEach((formattedDate) => {
+        const dateElement = screen.getByText(formattedDate);
+        expect(dateElement).toBeInTheDocument();
       });
     });
 
-  expect(container).toMatchSnapshot();
-});
+    expect(container).toMatchSnapshot();
+  });

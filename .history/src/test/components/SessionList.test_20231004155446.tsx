@@ -7,14 +7,8 @@ import SessionList from '../../components/SessionList';
 
 import store from '../../redux/store';
 
-const films = [
-        { id: 1, Title: 'Film 1', Poster: 'Poster 1' },
-        { id: 2, Title: 'Film 2', Poster: 'Poster 2' },
-        { id: 3, Title: 'Film 3', Poster: 'Poster 3' },
-    ];
-
 describe('check SessionList component', () => {
-
+    
     it('should check if loading message renders when films are empty', () => {
     const {container} = render(
         <Provider store={store}>
@@ -25,13 +19,16 @@ describe('check SessionList component', () => {
     );
 
     const loadingMessage = screen.getByText('Loading...');
-    
     expect(loadingMessage).toBeInTheDocument();
     expect(container).toMatchSnapshot();
     });
 
     it('should check if FilmBox components renders when films are available', () => {
-    
+    const films = [
+        { id: 1, Title: 'Film 1', Poster: 'Poster 1' },
+        { id: 2, Title: 'Film 2', Poster: 'Poster 2' },
+        { id: 3, Title: 'Film 3', Poster: 'Poster 3' },
+    ];
     store.dispatch({ type: 'SET_FILMS_LIST', payload: films });
 
     const {container} = render(
@@ -46,7 +43,6 @@ describe('check SessionList component', () => {
 
         expect(filmBoxTitle).toBeInTheDocument();
     });
-
     expect(container).toMatchSnapshot();
     });
 });
