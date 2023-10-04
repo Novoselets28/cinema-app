@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`check SessionList component should check if FilmBox components renders when films are available 1`] = `
+<div>
+  <div
+    class="sc-fqkvVR jWBLYB center-grid container"
+  >
+    <div
+      class="sc-dcJsrY iwazud row"
+    >
+      <div
+        class="col-xxl-3 col-lg-4 col-md-6 col-12"
+      >
+        <div
+          class="sc-eqUAAy bOpioT card"
+        >
+          <img
+            alt="Film 1"
+            class="card-img-top poster"
+            src="Poster 1"
+          />
+          <div
+            class="card-body"
+          >
+            <div
+              class="card-title h5"
+            >
+              Film 1
+            </div>
+            <button
+              class="btn btn-primary"
+              type="button"
+            >
+              View More
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-xxl-3 col-lg-4 col-md-6 col-12"
+      >
+        <div
+          class="sc-eqUAAy bOpioT card"
+        >
+          <img
+            alt="Film 2"
+            class="card-img-top poster"
+            src="Poster 2"
+          />
+          <div
+            class="card-body"
+          >
+            <div
+              class="card-title h5"
+            >
+              Film 2
+            </div>
+            <button
+              class="btn btn-primary"
+              type="button"
+            >
+              View More
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-xxl-3 col-lg-4 col-md-6 col-12"
+      >
+        <div
+          class="sc-eqUAAy bOpioT card"
+        >
+          <img
+            alt="Film 3"
+            class="card-img-top poster"
+            src="Poster 3"
+          />
+          <div
+            class="card-body"
+          >
+            <div
+              class="card-title h5"
+            >
+              Film 3
+            </div>
+            <button
+              class="btn btn-primary"
+              type="button"
+            >
+              View More
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`check SessionList component should check if loading message renders when films are empty 1`] = `
+<div>
+  <div
+    class="sc-fqkvVR jWBLYB center-grid container"
+  >
+    <div
+      class="sc-dcJsrY iwazud row"
+    >
+      <div>
+        Loading...
+      </div>
+    </div>
+  </div>
+</div>
+`;

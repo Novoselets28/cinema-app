@@ -7,7 +7,6 @@ import App from './App';
 
 import store from './redux/store';
 
-// eslint-disable-next-line react/no-deprecated
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

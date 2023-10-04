@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should check if loading message renders when sessions are empty 1`] = `
+<div>
+  <div>
+    Loading sessions...
+  </div>
+</div>
+`;
+
+exports[`should check if session buttons renders when sessions are available 1`] = `
+<div>
+  <div
+    class="sc-gEvEer gyOvpF container"
+  >
+    <button
+      class="sc-aXZVg kesiHi transparent-button btn btn-primary"
+      type="button"
+    >
+      Session 1
+    </button>
+    <button
+      class="sc-aXZVg kesiHi transparent-button btn btn-primary"
+      type="button"
+    >
+      Session 2
+    </button>
+    <button
+      class="sc-aXZVg kesiHi transparent-button btn btn-primary"
+      type="button"
+    >
+      Session 3
+    </button>
+  </div>
+</div>
+`;
