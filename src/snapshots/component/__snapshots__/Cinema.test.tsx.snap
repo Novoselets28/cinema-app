@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should renders Cinema component correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="container"
+  >
+    <h4>
+      You selected a film for 2023-09-29
+    </h4>
+    <h2>
+      Just choose a seat
+    </h2>
+    <div
+      class="row"
+    >
+      <div
+        class="sc-aXZVg wnUcX"
+      >
+        Cinema Screen
+      </div>
+    </div>
+    <div
+      class="sc-eqUAAy fyYumI"
+    >
+      <button
+        class="btn btn-primary"
+        disabled=""
+        type="button"
+      >
+        No Seats Selected
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

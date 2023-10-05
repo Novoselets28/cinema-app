@@ -13,14 +13,12 @@ export const fontSize = {
 
 export const GlobalStyle = createGlobalStyle`
   body {
-    margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: serif;
-    margin: 0;
     padding: 0;
     text-decoration: none;
     list-style-type: none;
@@ -29,11 +27,6 @@ export const GlobalStyle = createGlobalStyle`
     color: ${colors.primary};
     text-align: center;
     width: 100%;
-    margin: 1rem auto;
+    margin: 8px;
   }
 `;
-
-
-
-
-
