@@ -6,12 +6,14 @@ export const TOGGLE_SELECTED_SEAT = 'TOGGLE_SELECTED_SEAT';
 
 export const fetchAvailableSeats = (seats: string[]) => ({
   type: FETCH_AVAILABLE_SEATS,
-  payload: seats
+  payload: seats,
 });
 
 export const toggleSelectedSeat = (seat: string) => ({
-  type: TOGGLE_SELECTED_SEAT,
+  type: TOGGLE_SELECTED_SEAT as typeof TOGGLE_SELECTED_SEAT,
   payload: seat
+  type: TOGGLE_SELECTED_SEAT,
+  payload: seat,
 });
 
 interface CinemaState {
@@ -24,6 +26,7 @@ const initialState: CinemaState = {
   selectedSeats: []
 };
 
+export default function cinemaReducer (state:CinemaState = initialState, action: { type: string; payload: any; }) {
 export default function cinemaReducer(
   state: CinemaState = initialState,
   action: { type: string; payload: any }

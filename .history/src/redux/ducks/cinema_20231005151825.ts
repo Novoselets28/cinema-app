@@ -5,12 +5,12 @@ export const FETCH_AVAILABLE_SEATS = 'FETCH_AVAILABLE_SEATS';
 export const TOGGLE_SELECTED_SEAT = 'TOGGLE_SELECTED_SEAT';
 
 export const fetchAvailableSeats = (seats: string[]) => ({
-  type: FETCH_AVAILABLE_SEATS,
+  type: FETCH_AVAILABLE_SEATS as typeof FETCH_AVAILABLE_SEATS,
   payload: seats
 });
 
 export const toggleSelectedSeat = (seat: string) => ({
-  type: TOGGLE_SELECTED_SEAT,
+  type: TOGGLE_SELECTED_SEAT as typeof TOGGLE_SELECTED_SEAT,
   payload: seat
 });
 
@@ -24,10 +24,7 @@ const initialState: CinemaState = {
   selectedSeats: []
 };
 
-export default function cinemaReducer(
-  state: CinemaState = initialState,
-  action: { type: string; payload: any }
-) {
+export default function cinemaReducer (state:CinemaState = initialState, action: { type: string; payload: any; }) {
   switch (action.type) {
     case FETCH_AVAILABLE_SEATS:
       return { ...state, availableSeats: action.payload };
@@ -65,5 +62,5 @@ export function* fetchAvailableSeatsSaga(): Generator {
 }
 
 export function* cinemaSaga() {
-  yield takeLeading(FETCH_AVAILABLE_SEATS, fetchAvailableSeatsSaga);
+  yield takeLeading('FETCH_AVAILABLE_SEATS', fetchAvailableSeatsSaga);
 }
