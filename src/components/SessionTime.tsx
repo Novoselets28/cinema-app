@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'react-bootstrap';
-import { useNavigate, useParams } from 'react-router-dom';
-
+import { useNavigate, useParams } from 'react-router';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { fetchSessions, setSelectedSession } from '../redux/ducks/sessionTime';
@@ -28,14 +27,14 @@ const SessionTime: React.FC<SessionTimeProps> = () => {
   }
 
   const handleTimeSelect = (session: string) => {
-    dispatch(setSelectedSession(session));
-  };
-
-  const handleBookClick = () => {
-    if (selectedSession) {
-      navigate(`/cinema/${date}/${selectedSession}`);
-    }
-  };
+        dispatch(setSelectedSession(session));
+      };
+    
+      const handleBookClick = () => {
+        if (selectedSession) {
+          navigate(`/cinema/${date}/${selectedSession}`);
+        }
+      };
 
   return (
     <StyledContainer>
