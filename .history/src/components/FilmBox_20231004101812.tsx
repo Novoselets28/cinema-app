@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
-import { Button, Card, Col, Modal } from 'react-bootstrap';
+import { Button, Card, Col, Modal } from 'react-bootstrap'
 
 import SessionTime from './SessionTime';
 import StyledCard from '../styled/FilmBox';
@@ -10,7 +10,7 @@ interface FilmBoxProps {
   Poster: string;
 }
 
-const FilmBox: React.FC<FilmBoxProps> = ({ Title, Poster }) => {
+const FilmBox: React.FC<FilmBoxProps> = ({Title, Poster}) => {
 
   const [showPopup, setShowPopup] = useState<boolean>(false);
   const location = useLocation();
@@ -24,10 +24,6 @@ const FilmBox: React.FC<FilmBoxProps> = ({ Title, Poster }) => {
           setShowPopup(true);
         }
       }, [location, Title]);
-
-      const handlePosterClick = () => {
-        navigate(`/${Title}`);
-      };
     
       const handleShowPopup = () => {
         setShowPopup(true);
@@ -39,6 +35,10 @@ const FilmBox: React.FC<FilmBoxProps> = ({ Title, Poster }) => {
         setShowPopup(false);
         localStorage.removeItem(`popupState-${Title}`);
         navigate('');
+      };
+
+      const handlePosterClick = () => {
+        navigate(`/${Title}`);
       };
 
   return (
@@ -68,7 +68,7 @@ const FilmBox: React.FC<FilmBoxProps> = ({ Title, Poster }) => {
               </Modal>
             </StyledCard>
           </Col>
-  );
-};
+  )
+}
 
-export default FilmBox;
+export default FilmBox

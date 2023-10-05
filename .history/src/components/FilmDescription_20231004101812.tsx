@@ -14,7 +14,6 @@ interface FilmDescriptionParams {
 const FilmDescription: React.FC = () => {
   const { filmTitle } = useParams<FilmDescriptionParams>();
   const dispatch = useDispatch();
-  // eslint-disable-next-line max-len
   const { video, description } = useSelector((state: { filmDescription: FilmDescriptionState }) => state.filmDescription);
 
   useEffect(() => {
@@ -46,3 +45,4 @@ const FilmDescription: React.FC = () => {
 };
 
 export default FilmDescription;
+

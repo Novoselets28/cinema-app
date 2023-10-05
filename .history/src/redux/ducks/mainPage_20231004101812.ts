@@ -5,12 +5,12 @@ const FETCH_POSTERS = 'mainPage/FETCH_POSTERS';
 const SET_POSTERS = 'mainPage/SET_POSTERS';
 
 export const fetchPosters = () => ({
-  type: FETCH_POSTERS as typeof FETCH_POSTERS
+  type: FETCH_POSTERS as typeof FETCH_POSTERS,
 });
 
 export const setPosters = (posters: string[]) => ({
   type: SET_POSTERS as typeof SET_POSTERS,
-  payload: posters
+  payload: posters,
 });
 
 interface MainPageState {
@@ -18,7 +18,7 @@ interface MainPageState {
 }
 
 const initialState: MainPageState = {
-  posters: []
+  posters: [],
 };
 
 export default function mainPageReducer(state = initialState, action: MainPageActionTypes): MainPageState {

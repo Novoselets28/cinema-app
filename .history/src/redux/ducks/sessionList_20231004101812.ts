@@ -4,23 +4,26 @@ import { API_URL_LIST_OF_FILM } from '../../api';
 export const FETCH_FILMS_LIST = 'FETCH_FILMS_LIST';
 export const SET_FILMS_LIST = 'SET_FILMS_LIST';
 
+
 export interface SessionListState {
   films: string[];
 }
 
 export const fetchFilmsList = (): { type: string } => {
   return ({
-    type: FETCH_FILMS_LIST
+    type: FETCH_FILMS_LIST,
   });
 };
 
 export const setFilmsList = (films: any): { type: string, payload: any } => ({
   type: SET_FILMS_LIST,
-  payload: films
+  payload: films,
 });
 
+
+
 const initialState: SessionListState = {
-  films: []
+  films: [],
 };
 
 export default function sessionListReducer(

@@ -5,12 +5,12 @@ export const FETCH_SESSIONS = 'FETCH_SESSIONS';
 export const SET_SELECTED_SESSION = 'SET_SELECTED_SESSION';
 
 export const fetchSessions = (): { type: string } => ({
-  type: FETCH_SESSIONS
+  type: FETCH_SESSIONS,
 });
 
 export const setSelectedSession = (session: any): { type: string, payload: any } => ({
   type: SET_SELECTED_SESSION,
-  payload: session
+  payload: session,
 });
 
 interface SessionTimeState {
@@ -21,7 +21,7 @@ interface SessionTimeState {
 
 const initialState: SessionTimeState = {
   sessions: [],
-  selectedSession: null
+  selectedSession: null,
 };
 
 export default function sessionTimeReducer(
@@ -56,3 +56,4 @@ export function* fetchSessionsSaga(): Generator {
 export function* sessionTimeSaga(): Generator {
   yield takeEvery(FETCH_SESSIONS, fetchSessionsSaga);
 }
+

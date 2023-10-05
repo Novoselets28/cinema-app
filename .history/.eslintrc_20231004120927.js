@@ -52,6 +52,9 @@ module.exports = {
         'comma-dangle': ['error', 'never'],
         'semi': ['warn', 'always'],
         'dot-notation': 'error',
-        'quotes': ['error', 'single']
+        'quotes': ['error', 'single'],
+        'import/order':['error', {
+            'groups': ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object', 'type']
+        }]
     }
 };

@@ -31,7 +31,10 @@ module.exports = {
         'react'
     ],
     'rules': {
-        'max-lines': ['error', 1200],
+        'no-console': 'warn',
+        'no-alert': 'warn',
+        'no-debugger': 'warn',
+        'max-lines': ['error', 1000],
         'max-lines-per-function': ['error', 100],
         'max-params': ['error', 7],
         'max-len': [
@@ -54,4 +57,4 @@ module.exports = {
         'dot-notation': 'error',
         'quotes': ['error', 'single']
     }
-};
+}
