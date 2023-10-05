@@ -2,7 +2,6 @@ import { expectSaga } from 'redux-saga-test-plan';
 import { call } from 'redux-saga/effects';
 
 import { API_URL_SESSION_DETAILS } from '../../../api';
-// eslint-disable-next-line max-len
 import filmDescriptionReducer, { fetchFilmData, fetchFilmDataSaga, setFilmData } from '../../../redux/ducks/filmDescription';
 
 const filmTitle = 'Film 1';

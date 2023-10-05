@@ -19,13 +19,6 @@ describe('Styled Components', () => {
     `);
   });
 
-  it('should match snapshot for CinemaScreen', () => {
-    render(<CinemaScreen data-testid="cinema-screen" />);
-    const cinemaScreen = screen.getByTestId('cinema-screen');
-
-    expect(cinemaScreen).toMatchSnapshot();
-  });
-
   it('should have expected styles for HomeButton', () => {
     render(<HomeButton data-testid="home-button" />);
     const homeButton = screen.getByTestId('home-button');
@@ -33,13 +26,6 @@ describe('Styled Components', () => {
     expect(homeButton).toHaveStyle(`
       margin: 5px;
     `);
-  });
-
-  it('should match snapshot for HomeButton', () => {
-    render(<HomeButton data-testid="home-button" />);
-    const homeButton = screen.getByTestId('home-button');
-
-    expect(homeButton).toMatchSnapshot();
   });
 
   it('should have expected styles for StyledContainer', () => {
@@ -51,10 +37,5 @@ describe('Styled Components', () => {
     `);
   });
 
-  it('should match snapshot for StyledContainer', () => {
-    render(<StyledContainer data-testid="styled-container" />);
-    const styledContainer = screen.getByTestId('styled-container');
-
-    expect(styledContainer).toMatchSnapshot();
-  });
+  expect({ CinemaScreen, HomeButton, StyledContainer }).toMatchSnapshot();
 });

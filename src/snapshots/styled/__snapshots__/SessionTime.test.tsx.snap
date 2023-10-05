@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Styled Components should check if StyledButton has expected styles 1`] = `
+exports[`Styled Components should match snapshot for StyledButton 1`] = `
 <button
   class="sc-aXZVg kesiHi btn btn-primary"
   data-testid="styled-button"
@@ -8,7 +8,7 @@ exports[`Styled Components should check if StyledButton has expected styles 1`] 
 />
 `;
 
-exports[`Styled Components should check if StyledContainer has expected styles 1`] = `
+exports[`Styled Components should match snapshot for StyledContainer 1`] = `
 <div
   class="sc-gEvEer gyOvpF container"
   data-testid="styled-container"
