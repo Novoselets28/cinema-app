@@ -6,9 +6,9 @@ import cinemaReducer, {
 describe('Cinema Reducer', () => {
   it('should return the initial state', () => {
 
-    expect(cinemaReducer(undefined, {} as any)).toEqual({
-      availableSeats: [],
-      selectedSeats: []
+  expect(cinemaReducer(undefined, {} as any)).toEqual({
+    availableSeats: [],
+    selectedSeats: []
     });
   });
   
@@ -16,9 +16,9 @@ describe('Cinema Reducer', () => {
     const seats = ['A1', 'A2', 'B1'];
     const action = fetchAvailableSeats(seats);
       
-    expect(cinemaReducer(undefined, action)).toEqual({
-      availableSeats: seats,
-      selectedSeats: []
+  expect(cinemaReducer(undefined, action)).toEqual({
+    availableSeats: seats,
+    selectedSeats: []
     });
   });
   
@@ -30,9 +30,9 @@ describe('Cinema Reducer', () => {
     const seat = 'A1';
     const action = toggleSelectedSeat(seat);
         
-    expect(cinemaReducer(initialState, action)).toEqual({
-      availableSeats: [],
-      selectedSeats: ['A1']
+  expect(cinemaReducer(initialState, action)).toEqual({
+    availableSeats: [],
+    selectedSeats: ['A1']
     });
   });
       
@@ -44,9 +44,9 @@ describe('Cinema Reducer', () => {
     const seat = 'A1';
     const action = toggleSelectedSeat(seat);
 
-    expect(cinemaReducer(initialState, action)).toEqual({
-      availableSeats: ['A1', 'A2', 'B1'],
-      selectedSeats: []
+  expect(cinemaReducer(initialState, action)).toEqual({
+    availableSeats: ['A1', 'A2', 'B1'],
+    selectedSeats: []
     });
   });
 });

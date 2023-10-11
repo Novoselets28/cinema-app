@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`check SessionList component should check if FilmBox components renders when films are available 1`] = `
+exports[`check SessionList component should match snapshot for films available state 1`] = `
 <div>
   <div
     class="sc-fqkvVR jWBLYB center-grid container"
@@ -97,7 +97,7 @@ exports[`check SessionList component should check if FilmBox components renders 
 </div>
 `;
 
-exports[`check SessionList component should check if loading message renders when films are empty 1`] = `
+exports[`check SessionList component should match snapshot for loading state 1`] = `
 <div>
   <div
     class="sc-fqkvVR jWBLYB center-grid container"
