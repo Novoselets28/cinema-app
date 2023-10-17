@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Styled Components should match snapshot for StyledContainer 1`] = `
+<div
+  class="sc-aXZVg iSVraJ container"
+  data-testid="styled-container"
+/>
+`;
+
+exports[`Styled Components should match snapshot for StyledRow 1`] = `
+<div
+  class="sc-gEvEer jytxZI row"
+  data-testid="styled-row"
+/>
+`;

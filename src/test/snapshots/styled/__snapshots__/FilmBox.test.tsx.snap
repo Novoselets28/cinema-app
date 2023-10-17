@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StyledCard should match snapshot with custom cursor style if cursor prop is provided 1`] = `
+<div
+  class="sc-aXZVg iFHbHq card"
+  cursor="not-allowed"
+  data-testid="styled-card"
+/>
+`;
+
+exports[`StyledCard should match snapshot with default cursor style if cursor prop is not provided 1`] = `
+<div
+  class="sc-aXZVg hCXqUx card"
+  data-testid="styled-card"
+/>
+`;

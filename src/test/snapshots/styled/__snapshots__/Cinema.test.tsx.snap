@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Styled Components should match snapshot for CinemaScreen 1`] = `
+<div
+  class="sc-aXZVg wnUcX"
+  data-testid="cinema-screen"
+/>
+`;
+
+exports[`Styled Components should match snapshot for HomeButton 1`] = `
+<button
+  class="sc-gEvEer hnZgjw btn btn-primary"
+  data-testid="home-button"
+  type="button"
+/>
+`;
+
+exports[`Styled Components should match snapshot for StyledContainer 1`] = `
+<div
+  class="sc-eqUAAy fyYumI"
+  data-testid="styled-container"
+/>
+`;

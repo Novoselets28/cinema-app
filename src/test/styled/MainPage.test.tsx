@@ -6,7 +6,7 @@ import { fontSize } from '../../styled/global';
 import { StyledContainer, StyledRow } from '../../styled/MainPage';
 
 describe('Styled Components', () => {
-  it('should check if StyledContainer has expected styles', () => {
+  it('should have expected styles for StyledContainer', () => {
     render(<StyledContainer data-testid="styled-container" />);
     const styledContainer = screen.getByTestId('styled-container');
 
@@ -17,11 +17,16 @@ describe('Styled Components', () => {
       font-size: ${fontSize.large};
       line-height: 18px;
     `);
+  });
+
+  it('should match snapshot for StyledContainer', () => {
+    render(<StyledContainer data-testid="styled-container" />);
+    const styledContainer = screen.getByTestId('styled-container');
 
     expect(styledContainer).toMatchSnapshot();
   });
 
-  it('should check if StyledRow has expected styles', () => {
+  it('should have expected styles for StyledRow', () => {
     render(<StyledRow data-testid="styled-row" />);
     const styledRow = screen.getByTestId('styled-row');
 
@@ -29,7 +34,12 @@ describe('Styled Components', () => {
       display: flex;
       justify-content: center;
     `);
-    
+  });
+
+  it('should match snapshot for StyledRow', () => {
+    render(<StyledRow data-testid="styled-row" />);
+    const styledRow = screen.getByTestId('styled-row');
+
     expect(styledRow).toMatchSnapshot();
   });
 });

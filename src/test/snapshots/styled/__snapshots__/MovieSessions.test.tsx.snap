@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Styled Components should match snapshot for StyledButton 1`] = `
+<button
+  class="sc-aXZVg biAHXA btn btn-primary"
+  data-testid="styled-button"
+  type="button"
+/>
+`;
+
+exports[`Styled Components should match snapshot for StyledContainer 1`] = `
+<div
+  class="sc-gEvEer gyOvpF container"
+  data-testid="styled-container"
+/>
+`;

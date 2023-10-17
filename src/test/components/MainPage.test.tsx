@@ -11,9 +11,9 @@ test('should check if MainPage renders correctly', () => {
   
   const { container } = render(
     <Provider store={store}>
-        <MemoryRouter>
-            <MainPage mainPage={''} selectedSession={''} />
-        </MemoryRouter>
+      <MemoryRouter>
+        <MainPage mainPage={''} selectedSession={''} />
+      </MemoryRouter>
     </Provider>
   );
 

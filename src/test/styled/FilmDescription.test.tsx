@@ -14,6 +14,11 @@ describe('StyledContainer', () => {
       padding-bottom: 2rem;
       text-align: start;
     `);
+  });
+
+  it('should match snapshot', () => {
+    render(<StyledContainer data-testid="styled-container" />);
+    const styledContainer = screen.getByTestId('styled-container');
 
     expect(styledContainer).toMatchSnapshot();
   });

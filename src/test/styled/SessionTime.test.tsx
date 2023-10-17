@@ -5,7 +5,7 @@ import '@testing-library/jest-dom/extend-expect';
 import { StyledButton, StyledContainer } from '../../styled/SessionTime';
 
 describe('Styled Components', () => {
-  it('should check if StyledButton has expected styles', () => {
+  it('should have expected styles for StyledButton', () => {
     render(<StyledButton data-testid="styled-button" />);
     const styledButton = screen.getByTestId('styled-button');
 
@@ -13,11 +13,16 @@ describe('Styled Components', () => {
       width: 4rem;
       margin: 4px;
     `);
-    
+  });
+
+  it('should match snapshot for StyledButton', () => {
+    render(<StyledButton data-testid="styled-button" />);
+    const styledButton = screen.getByTestId('styled-button');
+
     expect(styledButton).toMatchSnapshot();
   });
 
-  it('should check if StyledContainer has expected styles', () => {
+  it('should have expected styles for StyledContainer', () => {
     render(<StyledContainer data-testid="styled-container" />);
     const styledContainer = screen.getByTestId('styled-container');
 
@@ -26,6 +31,11 @@ describe('Styled Components', () => {
       padding-bottom: 2rem;
       text-align: center;
     `);
+  });
+
+  it('should match snapshot for StyledContainer', () => {
+    render(<StyledContainer data-testid="styled-container" />);
+    const styledContainer = screen.getByTestId('styled-container');
 
     expect(styledContainer).toMatchSnapshot();
   });

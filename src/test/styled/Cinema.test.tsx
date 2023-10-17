@@ -6,7 +6,7 @@ import { CinemaScreen, HomeButton, StyledContainer } from '../../styled/Cinema';
 import { colors, fontSize } from '../../styled/global';
 
 describe('Styled Components', () => {
-  it('should check if CinemaScreen has expected styles', () => {
+  it('should have expected styles for CinemaScreen', () => {
     render(<CinemaScreen data-testid="cinema-screen" />);
     const cinemaScreen = screen.getByTestId('cinema-screen');
 
@@ -17,28 +17,43 @@ describe('Styled Components', () => {
       padding: 10px;
       margin-bottom: 20px;
     `);
+  });
+
+  it('should match snapshot for CinemaScreen', () => {
+    render(<CinemaScreen data-testid="cinema-screen" />);
+    const cinemaScreen = screen.getByTestId('cinema-screen');
 
     expect(cinemaScreen).toMatchSnapshot();
   });
 
-  it('should check if HomeButton has expected styles', () => {
+  it('should have expected styles for HomeButton', () => {
     render(<HomeButton data-testid="home-button" />);
     const homeButton = screen.getByTestId('home-button');
 
     expect(homeButton).toHaveStyle(`
       margin: 5px;
     `);
+  });
+
+  it('should match snapshot for HomeButton', () => {
+    render(<HomeButton data-testid="home-button" />);
+    const homeButton = screen.getByTestId('home-button');
 
     expect(homeButton).toMatchSnapshot();
   });
 
-  it('should check if StyledContainer has expected styles', () => {
+  it('should have expected styles for StyledContainer', () => {
     render(<StyledContainer data-testid="styled-container" />);
     const styledContainer = screen.getByTestId('styled-container');
 
     expect(styledContainer).toHaveStyle(`
       margin-top: 5px;
     `);
+  });
+
+  it('should match snapshot for StyledContainer', () => {
+    render(<StyledContainer data-testid="styled-container" />);
+    const styledContainer = screen.getByTestId('styled-container');
 
     expect(styledContainer).toMatchSnapshot();
   });
