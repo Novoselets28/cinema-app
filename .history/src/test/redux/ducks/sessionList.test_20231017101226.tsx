@@ -1,10 +1,14 @@
+import { call } from 'redux-saga/effects';
+import { expectSaga } from 'redux-saga-test-plan';
 import sessionListReducer, {
   FETCH_FILMS_LIST,
   SET_FILMS_LIST,
   fetchFilmsList,
   setFilmsList,
-  Film
+  Film,
+  fetchFilmsListSaga
 } from '../../../redux/ducks/sessionList';
+import { API_URL_LIST_OF_FILM } from '../../../api';
 
 const films: Film[] = [
   { id: 1, Title: 'Film 1', Poster: 'poster1.jpg' },

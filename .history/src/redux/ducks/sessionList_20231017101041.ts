@@ -3,6 +3,7 @@ import { API_URL_LIST_OF_FILM } from '../../api';
 
 export const FETCH_FILMS_LIST = 'FETCH_FILMS_LIST';
 export const SET_FILMS_LIST = 'SET_FILMS_LIST';
+
 export interface Film {
   id: number;
   Title: string;
@@ -51,6 +52,6 @@ export function* fetchFilmsListSaga() {
   }
 }
 
-export function* sessionListSaga() {
+export function* sessionListSaga(): Generator<ForkEffect<never>, void, unknown> {
   yield takeEvery(FETCH_FILMS_LIST, fetchFilmsListSaga);
 }

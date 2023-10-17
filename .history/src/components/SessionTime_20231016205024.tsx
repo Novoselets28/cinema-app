@@ -14,9 +14,8 @@ interface SessionTimeProps {
 
 const SessionTime: React.FC<SessionTimeProps> = () => {
   const { date } = useParams<{ date: string }>();
-  const sessions: string[] = useSelector((state: { sessionTime: { sessions: string[], selectedSession: string } }) => state.sessionTime.sessions);
-  const selectedSession: string = useSelector((state: { sessionTime: { sessions: string[], selectedSession: string } }) => state.sessionTime.selectedSession);
-
+  const sessions: string[] = useSelector((state: any) => state.sessionTime.sessions);
+  const selectedSession: string[] = useSelector((state: any) => state.sessionTime.selectedSession);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

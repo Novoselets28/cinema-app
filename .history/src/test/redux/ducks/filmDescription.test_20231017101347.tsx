@@ -3,6 +3,9 @@ import filmDescriptionReducer, { fetchFilmData, setFilmData } from '../../../red
 const filmTitle = 'Film 1';
 const video = 'film1.mp4';
 const description = 'Description of Film 1';
+const responseData = {
+      films: [{ title: filmTitle, video, descr: description }]
+    };
 
 describe('filmDescription actions', () => {
   it('should create an action to fetch film data', () => {

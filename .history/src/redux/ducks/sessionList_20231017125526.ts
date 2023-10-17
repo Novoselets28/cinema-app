@@ -51,6 +51,6 @@ export function* fetchFilmsListSaga() {
   }
 }
 
-export function* sessionListSaga() {
+export function* sessionListSaga(): Generator<ForkEffect<never>, void, unknown> {
   yield takeEvery(FETCH_FILMS_LIST, fetchFilmsListSaga);
 }

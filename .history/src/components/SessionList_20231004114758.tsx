@@ -10,12 +10,18 @@ import { StyledContainer, StyledRow } from '../styled/SessionList';
 interface Film {
   id: number;
 }
+
+interface SessionListState {
+  sessionList: any;
+  films: Film[];
+}
+
 interface SessionListProps {
   date: string;
 }
 
 const SessionList: React.FC<SessionListProps> = () => {
-  const films = useSelector((state: { sessionList: { films: Film[] } }) => state.sessionList.films);
+  const films = useSelector((state: SessionListState) => state.sessionList.films);
   const dispatch = useDispatch();
 
   useEffect(() => {

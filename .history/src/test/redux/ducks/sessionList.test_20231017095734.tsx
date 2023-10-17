@@ -1,10 +1,14 @@
+import { call } from 'redux-saga/effects';
+import { expectSaga } from 'redux-saga-test-plan';
 import sessionListReducer, {
   FETCH_FILMS_LIST,
   SET_FILMS_LIST,
   fetchFilmsList,
+  sessionListSaga,
   setFilmsList,
   Film
 } from '../../../redux/ducks/sessionList';
+import { API_URL_LIST_OF_FILM } from '../../../api';
 
 const films: Film[] = [
   { id: 1, Title: 'Film 1', Poster: 'poster1.jpg' },
@@ -39,5 +43,18 @@ describe('sessionList actions', () => {
     };
 
     expect(sessionListReducer(initialState, action)).toEqual(expectedState);
+  });
+
+  it('should fetch films list data and dispatch setFilmsList action', () => {
+    const responseData = {
+      list: films
+    };
+
+    return expectSaga(sessionListSaga)
+      .provide([
+        [call(fetch, API_URL_LIST_OF_FILM), { ok: true, json: () => responseData }]
+      ])
+      .put(setFilmsList(responseData.list))
+      .run();
   });
 });
