@@ -35,4 +35,23 @@ describe('mainPage actions', () => {
     
     expect(mainPageReducer(initialState, action)).toEqual(expectedState);
   });
+  
+  it('should fetch posters data and dispatch setPosters action', () => {
+    const responseData = {
+      list: [
+        { Poster: 'poster1.jpg' },
+        { Poster: 'poster2.jpg' }
+      ]
+    };
+
+    return expectSaga(mainPageSaga)
+      .provide([
+        [call(fetch, API_URL_LIST_OF_FILM), { ok: true, json: () => responseData }]
+      ])
+      .put({
+        type: 'mainPage/SET_POSTERS',
+        payload: ['poster1.jpg', 'poster2.jpg']
+      })
+      .run();
+  });
 });

@@ -39,4 +39,15 @@ describe('movieSessions actions', () => {
     
     expect(movieSessionsReducer(initialState, action)).toEqual(expectedState);
   });
+
+  it('should fetch available dates data and dispatch setAvailableDates action', () => {
+    const responseData = {
+      dates: ['2023-10-01', '2023-10-02']
+    };
+
+    return expectSaga(fetchAvailableDatesSaga)
+      .provide([[call(fetch, API_URL_SESSIONS), { ok: true, json: () => responseData }]])
+      .put(setAvailableDates(responseData.dates))
+      .run();
+  });
 });

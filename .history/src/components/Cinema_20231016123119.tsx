@@ -4,8 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Button, Container } from 'react-bootstrap';
 
 import { CinemaScreen, HomeButton, StyledContainer } from '../styled/Cinema';
-import { fetchAvailableSeats, toggleSelectedSeat } from '../redux/ducks/cinema';
-import { RootState } from '../redux/store';
+import { fetchAvailableSeats } from '../redux/ducks/cinema';
 
 interface CinemaProps {
   date: string;
@@ -16,8 +15,8 @@ const Cinema: React.FC<CinemaProps> = () => {
   const { date, selectedSession } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const availableSeats: string[] = useSelector((state: RootState) => state.cinema.availableSeats);
-  const selectedSeats: string[] = useSelector((state: RootState) => state.cinema.selectedSeats);
+  const availableSeats:string[] = useSelector((state: any) => state.cinema.availableSeats) || [];
+  const selectedSeats:string[] = useSelector((state: any) => state.cinema.selectedSeats);
 
   const [isAlertActive, setIsAlertActive] = useState<boolean>(false);
 
@@ -25,19 +24,19 @@ const Cinema: React.FC<CinemaProps> = () => {
     dispatch(fetchAvailableSeats([]));
   }, [dispatch]);
 
-  const isSeatBooked = (seat: string): boolean => selectedSeats.includes(seat);
+  const isSeatBooked = (seat: string):boolean => selectedSeats.includes(seat);
 
-  const handleSeatSelect = (seat: string): void => {
-    dispatch(toggleSelectedSeat(seat));
+  const handleSeatSelect = (seat:string):void => {
+    dispatch({ type: 'TOGGLE_SELECTED_SEAT', payload: seat });
   };
 
-  const handleBookSeats = (): void => {
+  const handleBookSeats = ():void => {
     // eslint-disable-next-line no-alert
     alert(`Booked seats: ${selectedSeats.join(', ')} for ${selectedSession}`);
     setIsAlertActive(true);
   };
 
-  const areSeatsSelected: boolean = selectedSeats.length > 0;
+  const areSeatsSelected:boolean = selectedSeats?.length > 0;
 
   const handleGoMainPage = (): void => {
     navigate('/');

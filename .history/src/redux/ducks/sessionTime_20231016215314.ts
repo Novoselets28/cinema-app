@@ -2,6 +2,7 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import { API_URL_AVAILABLE_SESSION } from '../../api';
 
 export const FETCH_SESSIONS = 'FETCH_SESSIONS';
+export const SET_SESSIONS = 'SET_SESSIONS'; // Updated action type
 export const SET_SELECTED_SESSION = 'SET_SELECTED_SESSION';
 
 export const fetchSessions = (): { type: string } => ({
@@ -13,25 +14,25 @@ export const setSelectedSession = (session: string): { type: string, payload: st
   payload: session
 });
 
-interface SessionTimeState {
+export interface SessionTimeState {
   sessions: string[];
-  selectedSession: string | null;
+  selectedSession: string[];
 }
 
 const initialState: SessionTimeState = {
   sessions: [],
-  selectedSession: null
+  selectedSession: []
 };
 
 export default function sessionTimeReducer(
   state: SessionTimeState = initialState,
-  action: { type: string; payload: string[] | string | null }
+  action: { type: string; payload: string[] }
 ): SessionTimeState {
   switch (action.type) {
-    case 'SET_SESSIONS':
-      return { ...state, sessions: action.payload as string[] };
-    case 'SET_SELECTED_SESSION':
-      return { ...state, selectedSession: action.payload as string };
+    case SET_SESSIONS: // Updated action type
+      return { ...state, sessions: action.payload };
+    case SET_SELECTED_SESSION:
+      return { ...state, selectedSession: action.payload };
     default:
       return state;
   }
@@ -45,13 +46,13 @@ export function* fetchSessionsSaga() {
     }
     const data: { sessions: string[] } = yield response.json();
     if (data && data.sessions) {
-      yield put({ type: 'SET_SESSIONS', payload: data.sessions });
+      yield put({ type: SET_SESSIONS, payload: data.sessions }); // Updated action type
     }
   } catch (error) {
     console.error('Error fetching data:', error);
   }
 }
 
-export function* sessionTimeSaga() {
+export function* sessionTimeSaga(): Generator {
   yield takeEvery(FETCH_SESSIONS, fetchSessionsSaga);
 }

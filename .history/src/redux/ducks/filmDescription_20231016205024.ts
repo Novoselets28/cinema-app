@@ -42,15 +42,15 @@ export default function filmDescriptionReducer(
   }
 }
 
-export function* fetchFilmDataSaga(action: ReturnType<typeof fetchFilmData>) {
+export function* fetchFilmDataSaga(action: ReturnType<typeof fetchFilmData>): Generator<any, void, unknown> {
   try {
-    const response: Response = yield call(fetch, API_URL_SESSION_DETAILS);
+    const response: any = yield call(fetch as any, API_URL_SESSION_DETAILS);
     if (!response.ok) {
       throw new Error(`HTTP Error! Status: ${response.status}`);
     }
-    const data: { films: { title: string; video: string; descr: string }[] } = yield response.json();
+    const data: any = yield response.json();
 
-    const matchingFilm = data.films.find((film) => film.title === action.payload);
+    const matchingFilm = data.films.find((film: { title: string }) => film.title === action.payload);
 
     if (matchingFilm) {
       yield put(setFilmData(matchingFilm.video, matchingFilm.descr));

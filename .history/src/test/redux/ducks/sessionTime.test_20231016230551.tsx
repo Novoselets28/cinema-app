@@ -22,7 +22,6 @@ describe('SessionTime Actions', () => {
 
     expect(setSelectedSession(session)).toEqual(expectedAction);
   });
-  
   it('should handle FETCH_SESSIONS', () => {
     const initialState = {
       sessions: [],
@@ -30,7 +29,7 @@ describe('SessionTime Actions', () => {
     };
   
     const action = {
-      type: 'SET_SESSIONS',
+      type: FETCH_SESSIONS,
       payload: ['Session 1', 'Session 2']
     };
   
@@ -42,6 +41,7 @@ describe('SessionTime Actions', () => {
     expect(sessionTimeReducer(initialState, action)).toEqual(expectedState);
   });
   
+
   it('should handle SET_SELECTED_SESSION', () => {
     const initialState = {
       sessions: [],

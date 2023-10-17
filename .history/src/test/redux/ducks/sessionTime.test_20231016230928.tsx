@@ -30,7 +30,7 @@ describe('SessionTime Actions', () => {
     };
   
     const action = {
-      type: 'SET_SESSIONS',
+      type: 'SET_SESSIONS', // Make sure the action type matches
       payload: ['Session 1', 'Session 2']
     };
   
@@ -42,6 +42,7 @@ describe('SessionTime Actions', () => {
     expect(sessionTimeReducer(initialState, action)).toEqual(expectedState);
   });
   
+
   it('should handle SET_SELECTED_SESSION', () => {
     const initialState = {
       sessions: [],

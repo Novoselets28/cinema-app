@@ -4,24 +4,20 @@ import { API_URL_LIST_OF_FILM } from '../../api';
 export const FETCH_FILMS_LIST = 'FETCH_FILMS_LIST';
 export const SET_FILMS_LIST = 'SET_FILMS_LIST';
 
-export interface Film {
-  id: number;
-  Title: string;
-  Poster: string;
+export interface SessionListState {
+  films: string[];
 }
 
-export const fetchFilmsList = () => ({
-  type: FETCH_FILMS_LIST as typeof FETCH_FILMS_LIST
-});
+export const fetchFilmsList = (): { type: string } => {
+  return ({
+    type: FETCH_FILMS_LIST
+  });
+};
 
-export const setFilmsList = (films: Film[]) => ({
-  type: SET_FILMS_LIST as typeof SET_FILMS_LIST,
+export const setFilmsList = (films: any): { type: string, payload: any } => ({
+  type: SET_FILMS_LIST,
   payload: films
 });
-
-interface SessionListState {
-  films: Film[];
-}
 
 const initialState: SessionListState = {
   films: []
@@ -29,7 +25,7 @@ const initialState: SessionListState = {
 
 export default function sessionListReducer(
   state: SessionListState = initialState,
-  action: { type: string; payload: Film[] }
+  action: { type: string; payload: any }
 ): SessionListState {
   switch (action.type) {
     case SET_FILMS_LIST:
@@ -39,13 +35,13 @@ export default function sessionListReducer(
   }
 }
 
-export function* fetchFilmsListSaga() {
+export function* fetchFilmsListSaga():Generator {
   try {
-    const response: Response = yield call(fetch, API_URL_LIST_OF_FILM);
+    const response: any = yield call(fetch as any, API_URL_LIST_OF_FILM);
     if (!response.ok) {
       throw new Error(`HTTP Error! Status: ${response.status}`);
     }
-    const data: { list: Film[] } = yield response.json();
+    const data: any = yield response.json();
     yield put(setFilmsList(data.list));
   } catch (error) {
     console.error('Error fetching data:', error);

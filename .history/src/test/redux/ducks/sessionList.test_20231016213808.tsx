@@ -6,11 +6,11 @@ import sessionListReducer, {
   fetchFilmsList,
   sessionListSaga,
   setFilmsList,
-  Film
+  Film // Import the Film type from your code
 } from '../../../redux/ducks/sessionList';
 import { API_URL_LIST_OF_FILM } from '../../../api';
 
-const films: Film[] = [
+const films: Film[] = [ // Use the Film type
   { id: 1, Title: 'Film 1', Poster: 'poster1.jpg' },
   { id: 2, Title: 'Film 2', Poster: 'poster2.jpg' }
 ];
@@ -27,7 +27,7 @@ describe('sessionList actions', () => {
   it('should create an action to set films list', () => {
     const expectedAction = {
       type: SET_FILMS_LIST,
-      payload: films
+      payload: films // Use the Film[] type
     };
 
     expect(setFilmsList(films)).toEqual(expectedAction);
@@ -39,7 +39,7 @@ describe('sessionList actions', () => {
     };
     const action = setFilmsList(films);
     const expectedState = {
-      films
+      films // Use the Film[] type
     };
 
     expect(sessionListReducer(initialState, action)).toEqual(expectedState);
@@ -54,7 +54,7 @@ describe('sessionList actions', () => {
       .provide([
         [call(fetch as any, API_URL_LIST_OF_FILM), { ok: true, json: () => responseData }]
       ])
-      .put(setFilmsList(responseData.list))
+      .put(setFilmsList(responseData.list)) // Use the Film[] type
       .run();
   });
 });

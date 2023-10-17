@@ -32,22 +32,14 @@ export default function mainPageReducer(state = initialState, action: MainPageAc
 
 type MainPageActionTypes = ReturnType<typeof fetchPosters | typeof setPosters>;
 
-interface Film {
-  Poster: string;
-}
-
-interface FilmListResponse {
-  list: Film[];
-}
-
-export function* fetchPostersDataSaga() {
+export function* fetchPostersDataSaga(): Generator {
   try {
-    const response: Response = yield call(fetch, API_URL_LIST_OF_FILM);
+    const response: any = yield call(fetch, API_URL_LIST_OF_FILM);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
-    const data: FilmListResponse = yield response.json();
-    const postersArray = data.list.map((film) => film.Poster);
+    const data: any = yield response.json();
+    const postersArray = data.list.map((film: any) => film.Poster);
     yield put(setPosters(postersArray));
   } catch (error) {
     console.error('Error fetching posters:', error);

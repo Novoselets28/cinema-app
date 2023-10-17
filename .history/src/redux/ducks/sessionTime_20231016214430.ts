@@ -14,24 +14,25 @@ export const setSelectedSession = (session: string): { type: string, payload: st
 });
 
 interface SessionTimeState {
-  sessions: string[];
-  selectedSession: string | null;
+  sessions: string;
+  selectedSession: string;
 }
 
+
 const initialState: SessionTimeState = {
-  sessions: [],
-  selectedSession: null
+  sessions: '',
+  selectedSession: ''
 };
 
 export default function sessionTimeReducer(
   state: SessionTimeState = initialState,
-  action: { type: string; payload: string[] | string | null }
+  action: { type: string; payload: string }
 ): SessionTimeState {
   switch (action.type) {
     case 'SET_SESSIONS':
-      return { ...state, sessions: action.payload as string[] };
+      return { ...state, sessions: action.payload };
     case 'SET_SELECTED_SESSION':
-      return { ...state, selectedSession: action.payload as string };
+      return { ...state, selectedSession: action.payload };
     default:
       return state;
   }
@@ -39,11 +40,11 @@ export default function sessionTimeReducer(
 
 export function* fetchSessionsSaga() {
   try {
-    const response: Response = yield call(fetch, API_URL_AVAILABLE_SESSION);
+    const response: Response = yield call(fetch as any, API_URL_AVAILABLE_SESSION);
     if (!response.ok) {
       throw new Error(`HTTP Error! Status: ${response.status}`);
     }
-    const data: { sessions: string[] } = yield response.json();
+    const data: {sessions: string[]} = yield response.json();
     if (data && data.sessions) {
       yield put({ type: 'SET_SESSIONS', payload: data.sessions });
     }
@@ -52,6 +53,6 @@ export function* fetchSessionsSaga() {
   }
 }
 
-export function* sessionTimeSaga() {
+export function* sessionTimeSaga(): Generator {
   yield takeEvery(FETCH_SESSIONS, fetchSessionsSaga);
 }

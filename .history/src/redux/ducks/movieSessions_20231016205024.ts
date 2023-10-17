@@ -8,12 +8,12 @@ export interface MovieSessionsState {
   availableDates: string[];
 }
 
-export const fetchAvailableDates = () => ({
-  type: FETCH_AVAILABLE_DATES as typeof FETCH_AVAILABLE_DATES
+export const fetchAvailableDates = (): { type: string } => ({
+  type: FETCH_AVAILABLE_DATES
 });
   
-export const setAvailableDates = (dates: string[]) => ({
-  type: SET_AVAILABLE_DATES as typeof SET_AVAILABLE_DATES,
+export const setAvailableDates = (dates: any): { type: string, payload: any } => ({
+  type: SET_AVAILABLE_DATES,
   payload: dates
 });
 
@@ -22,22 +22,22 @@ const initialState: MovieSessionsState = {
 };
   
 // eslint-disable-next-line max-len
-export default function movieSessionsReducer(state: MovieSessionsState = initialState, action: { type: string; payload: string[] }): MovieSessionsState {
+export default function movieSessionsReducer (state: MovieSessionsState = initialState, action: { type: any; payload: any; }) {
   switch (action.type) {
-    case SET_AVAILABLE_DATES:
+    case 'SET_AVAILABLE_DATES':
       return { ...state, availableDates: action.payload };
     default:
       return state;
   }
-}
+};
 
-export function* fetchAvailableDatesSaga() {
+export function* fetchAvailableDatesSaga():Generator {
   try {
-    const response: Response = yield call(fetch, API_URL_SESSIONS);
+    const response:any = yield call(fetch, API_URL_SESSIONS);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
-    const data: { dates: string[] } = yield response.json();
+    const data:any = yield response.json();
     if (data && data.dates) {
       yield put(setAvailableDates(data.dates));
     }

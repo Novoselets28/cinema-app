@@ -45,4 +45,12 @@ describe('filmDescription actions', () => {
 
     expect(filmDescriptionReducer(initialState, action)).toEqual(expectedState);
   });
+  
+  it('should fetch film data and dispatch setFilmData action', () => {
+
+    return expectSaga(fetchFilmDataSaga, fetchFilmData(filmTitle))
+      .provide([[call(fetch, API_URL_SESSION_DETAILS), { ok: true, json: () => responseData }]])
+      .put(setFilmData(video, description))
+      .run();
+  });
 });

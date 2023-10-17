@@ -5,12 +5,12 @@ export const FETCH_AVAILABLE_SEATS = 'FETCH_AVAILABLE_SEATS';
 export const TOGGLE_SELECTED_SEAT = 'TOGGLE_SELECTED_SEAT';
 
 export const fetchAvailableSeats = (seats: string[]) => ({
-  type: FETCH_AVAILABLE_SEATS as typeof FETCH_AVAILABLE_SEATS,
+  type: FETCH_AVAILABLE_SEATS,
   payload: seats
 });
 
 export const toggleSelectedSeat = (seat: string) => ({
-  type: TOGGLE_SELECTED_SEAT as typeof TOGGLE_SELECTED_SEAT,
+  type: TOGGLE_SELECTED_SEAT,
   payload: seat
 });
 
@@ -26,8 +26,8 @@ const initialState: CinemaState = {
 
 export default function cinemaReducer(
   state: CinemaState = initialState,
-  action: CinemaActionTypes
-): CinemaState {
+  action: { type: string; payload: any }
+) {
   switch (action.type) {
     case FETCH_AVAILABLE_SEATS:
       return { ...state, availableSeats: action.payload };
@@ -35,7 +35,7 @@ export default function cinemaReducer(
       const seat = action.payload;
       const isSelected = state.selectedSeats.includes(seat);
       let selectedSeats;
-
+      
       if (isSelected) {
         selectedSeats = state.selectedSeats.filter((selectedSeat) => selectedSeat !== seat);
       } else {
@@ -48,16 +48,14 @@ export default function cinemaReducer(
   }
 }
 
-type CinemaActionTypes = ReturnType<typeof fetchAvailableSeats | typeof toggleSelectedSeat>;
-
-export function* fetchAvailableSeatsSaga() {
+export function* fetchAvailableSeatsSaga(): Generator {
   try {
-    const response: Response = yield call(fetch, API_URL_SEATS);
+    const response: any = yield call(fetch as any, API_URL_SEATS);
     console.log('Request URL:', API_URL_SEATS);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
-    const data: { seats: string[] } = yield response.json();
+    const data: any = yield response.json();
     if (data && data.seats) {
       yield put(fetchAvailableSeats(data.seats));
     }

@@ -1,24 +1,19 @@
 import { call } from 'redux-saga/effects';
 import { expectSaga } from 'redux-saga-test-plan';
+
 import sessionListReducer, {
-  FETCH_FILMS_LIST,
-  SET_FILMS_LIST,
   fetchFilmsList,
-  sessionListSaga,
-  setFilmsList,
-  Film
+  fetchFilmsListSaga,
+  setFilmsList
 } from '../../../redux/ducks/sessionList';
 import { API_URL_LIST_OF_FILM } from '../../../api';
 
-const films: Film[] = [
-  { id: 1, Title: 'Film 1', Poster: 'poster1.jpg' },
-  { id: 2, Title: 'Film 2', Poster: 'poster2.jpg' }
-];
+const films = ['Film 1', 'Film 2'];
 
 describe('sessionList actions', () => {
   it('should create an action to fetch films list', () => {
     const expectedAction = {
-      type: FETCH_FILMS_LIST
+      type: 'FETCH_FILMS_LIST'
     };
 
     expect(fetchFilmsList()).toEqual(expectedAction);
@@ -26,7 +21,7 @@ describe('sessionList actions', () => {
 
   it('should create an action to set films list', () => {
     const expectedAction = {
-      type: SET_FILMS_LIST,
+      type: 'SET_FILMS_LIST',
       payload: films
     };
 
@@ -39,7 +34,7 @@ describe('sessionList actions', () => {
     };
     const action = setFilmsList(films);
     const expectedState = {
-      films
+      films: ['Film 1', 'Film 2']
     };
 
     expect(sessionListReducer(initialState, action)).toEqual(expectedState);
@@ -47,13 +42,11 @@ describe('sessionList actions', () => {
 
   it('should fetch films list data and dispatch setFilmsList action', () => {
     const responseData = {
-      list: films
+      list: ['Film 1', 'Film 2']
     };
 
-    return expectSaga(sessionListSaga)
-      .provide([
-        [call(fetch as any, API_URL_LIST_OF_FILM), { ok: true, json: () => responseData }]
-      ])
+    return expectSaga(fetchFilmsListSaga)
+      .provide([[call(fetch as any, API_URL_LIST_OF_FILM), { ok: true, json: () => responseData }]])
       .put(setFilmsList(responseData.list))
       .run();
   });

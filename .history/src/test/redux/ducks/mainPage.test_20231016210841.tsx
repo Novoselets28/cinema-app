@@ -1,7 +1,7 @@
 import { call } from 'redux-saga/effects';
 import { expectSaga } from 'redux-saga-test-plan';
 
-import mainPageReducer, { fetchPosters, mainPageSaga, setPosters } from '../../../redux/ducks/mainPage';
+import mainPageReducer, { fetchPosters, fetchPostersDataSaga, mainPageSaga, setPosters } from '../../../redux/ducks/mainPage';
 import { API_URL_LIST_OF_FILM } from '../../../api';
 
 describe('mainPage actions', () => {
@@ -34,5 +34,19 @@ describe('mainPage actions', () => {
     };
     
     expect(mainPageReducer(initialState, action)).toEqual(expectedState);
+  });
+  
+  it('should fetch posters data and dispatch setPosters action', () => {
+    const responseData = {
+      list: [
+        { Poster: 'poster1.jpg' },
+        { Poster: 'poster2.jpg' }
+      ]
+    };
+
+    return expectSaga(mainPageSaga)
+      .provide([[call(fetch, API_URL_LIST_OF_FILM), { ok: true, json: () => responseData }]])
+      .put(setPosters(['poster1.jpg', 'poster2.jpg']))
+      .run();
   });
 });
