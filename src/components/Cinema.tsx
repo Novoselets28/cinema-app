@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Button, Container } from 'react-bootstrap';
 
 import { CinemaScreen, HomeButton, StyledContainer } from '../styled/Cinema';
-import { fetchAvailableSeats } from '../redux/ducks/cinema';
 
 interface CinemaProps {
   date: string;
@@ -21,10 +20,11 @@ const Cinema: React.FC<CinemaProps> = () => {
   const [isAlertActive, setIsAlertActive] = useState<boolean>(false);
 
   useEffect(() => {
-    dispatch(fetchAvailableSeats([]));
+    dispatch({ type: 'FETCH_AVAILABLE_SEATS' });
   }, [dispatch]);
 
   const isSeatBooked = (seat: string):boolean => selectedSeats.includes(seat);
+
 
   const handleSeatSelect = (seat:string):void => {
     dispatch({ type: 'TOGGLE_SELECTED_SEAT', payload: seat });
@@ -36,7 +36,7 @@ const Cinema: React.FC<CinemaProps> = () => {
     setIsAlertActive(true);
   };
 
-  const areSeatsSelected:boolean = selectedSeats?.length > 0;
+  const areSeatsSelected:boolean = selectedSeats.length > 0;
 
   const handleGoMainPage = (): void => {
     navigate('/');
@@ -78,4 +78,6 @@ const Cinema: React.FC<CinemaProps> = () => {
   );
 };
 
+
 export default Cinema;
+

@@ -24,10 +24,6 @@ const FilmBox: React.FC<FilmBoxProps> = ({ Title, Poster }) => {
           setShowPopup(true);
         }
       }, [location, Title]);
-
-      const handlePosterClick = () => {
-        navigate(`/${Title}`);
-      };
     
       const handleShowPopup = () => {
         setShowPopup(true);
@@ -39,6 +35,10 @@ const FilmBox: React.FC<FilmBoxProps> = ({ Title, Poster }) => {
         setShowPopup(false);
         localStorage.removeItem(`popupState-${Title}`);
         navigate('');
+      };
+
+      const handlePosterClick = () => {
+        navigate(`/${Title}`);
       };
 
   return (

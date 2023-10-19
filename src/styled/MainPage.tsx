@@ -1,6 +1,5 @@
 import { Container, Row } from 'react-bootstrap';
 import styled from 'styled-components';
-
 import { fontSize } from './global';
 
 export const StyledContainer = styled(Container)`
